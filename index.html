@@ -982,6 +982,27 @@
   .bar .has-sub .sub a{font-weight:700;color:var(--ink)}
   .bar .has-sub .sub a:hover{color:var(--accent)}
   .bar .has-sub .sub a.on{color:var(--accent)}
+
+  /* 학습 자료 다운 안내창 */
+  .btn[data-dlopen]{font-family:inherit;cursor:pointer}
+  .dlm{position:fixed;inset:0;z-index:150;background:rgba(15,17,22,.66);display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
+  .dlm[hidden]{display:none}
+  .dlm .dc{background:var(--card);border-radius:14px;padding:28px 30px 24px;width:min(580px,100%);text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);animation:pop .4s var(--ease) both}
+  .dlm .dc b{display:block;font-family:'Noto Serif KR',serif;font-size:17px;color:var(--accent);margin-bottom:6px}
+  .dlm .dc b::after{content:"";display:block;width:36px;height:2px;margin:12px auto 0;background:var(--hl)}
+  .dlm .dc p{margin:16px 0 24px;font-size:14px;line-height:1.75;color:#44474c;word-break:keep-all}
+  .dlm .dc p span{display:block;text-wrap:balance}
+  .dlm .dc p span + span{margin-top:8px}
+  .dlm .dc p b{display:inline;font-family:inherit;font-size:inherit;margin:0;color:var(--ink);font-weight:700;background:none}
+  .dlm .dc p b::after{display:none}
+  .dlm .da{display:flex;gap:10px;max-width:360px;margin:0 auto}
+  .dlm .da > *{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:8px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:background .25s,color .25s}
+  .dlm .go{background:var(--accent);border:1px solid var(--accent);color:#fff}
+  .dlm .go:hover{background:#243b4c}
+  .dlm .back{background:transparent;border:1px solid var(--line);color:var(--sub)}
+  .dlm .back:hover{background:rgba(120,124,130,.12);color:var(--ink)}
+  /* 홈 애니메이션 건너뛰기: 클릭하면 최종 모습으로 바로 */
+  html.hskip .home .ttl::before,html.hskip .home .ttl::after,html.hskip .home .ttl h1,html.hskip .home .tag .l1,html.hskip .home .tag .ch,html.hskip .home .tag .tg i,html.hskip .home .hin > .acts > *,html.hskip .home .dlw small{animation-delay:-30s!important}
 </style>
 </head>
 <body class="loading">
@@ -1018,7 +1039,7 @@
         <div class="acts">
           <a class="btn solid" href="https://jjh0104kr.github.io/busan2026/" target="_blank" rel="noopener">게임 시작 ↗</a>
           <button type="button" class="btn ghost qrb" data-qr>QR</button>
-          <span class="dlw"><a class="btn ghost" href="files/learning-material.zip" download="피란의 기억을 잇다 학습 자료 및 교사용 가이드북.zip">학습 자료 다운</a><small>학생·교사용 활동지, 가이드북 포함</small></span>
+          <span class="dlw"><button type="button" class="btn ghost" data-dlopen>학습 자료 다운</button><small>학생·교사용 활동지, 가이드북 포함</small></span>
           <a class="btn ghost" href="https://forms.gle/GHzv9nTCaqPWgsQt8" target="_blank" rel="noopener">만족도 조사</a>
         </div>
       </div>
@@ -1380,6 +1401,7 @@
   </section>
 
 </main>
+<div class="dlm" id="dlm" hidden><div class="dc" role="dialog" aria-modal="true" aria-label="학습 자료 다운로드 안내"><b>학습 자료 다운로드</b><p><span><b class="kv">활동지(학생용, 교사용)</b>와 <b class="kv">가이드북(교사용)</b>이 포함되어 있습니다.</span><span>다운로드 버튼을 누르면, 한글 파일이 <b class="kv">zip 파일 하나</b>로 다운됩니다.</span><span>수업을 진행하시려는 <b class="kv">선생님/보호자께서는</b> 적극적으로 활용해주시면 감사하겠습니다.</span></p><div class="da"><a class="go" href="files/learning-material.zip" download="피란의 기억을 잇다 학습 자료 및 교사용 가이드북.zip" data-dlgo>다운로드</a><button type="button" class="back" data-dlclose>돌아가기</button></div></div></div>
 <div class="qrm" id="qrm" hidden><div class="qc" role="dialog" aria-label="QR 코드"><button type="button" class="x" data-qrclose aria-label="닫기">×</button><b>피란의 기억을 잇다</b><img src="img/qr.png" alt="게임 QR 코드" width="240" height="240"><span class="qurl" role="button" tabindex="0" title="클릭하면 주소가 복사돼요"><span class="ua">https://jjh0104kr.github.io/busan2026/</span><span class="ub">주소가 복사되었어요</span></span><span>스마트폰 카메라로 스캔해 주세요</span><button type="button" class="btn qzoom" data-qrzoom>QR 확대하기</button></div></div>
 <div class="qrfull" id="qrfull" hidden><button type="button" class="x" data-qrfullclose aria-label="닫기">×</button><img src="img/qr.png" alt="게임 QR 코드 (확대)"></div>
 <div class="cardm" id="cardm" hidden><div class="cc" role="dialog" aria-label="답사지 카드뉴스"><button type="button" class="x" data-cardclose aria-label="닫기">×</button><img id="cardmimg" alt="" width="640" height="640"><span id="cardmcap"></span></div></div>
@@ -1606,7 +1628,7 @@ function playCine(id,done){
     document.addEventListener('keydown',function(e){
       if(e.defaultPrevented||cineOn)return;
       if(document.getElementById('p-cards').hidden)return;
-      if(!document.getElementById('qrm').hidden||!document.getElementById('cardm').hidden)return;
+      if(!document.getElementById('qrm').hidden||!document.getElementById('cardm').hidden||!document.getElementById('dlm').hidden)return;
       if(e.key==='ArrowRight'){e.preventDefault();jump(cur()+1);}
       else if(e.key==='ArrowLeft'){e.preventDefault();jump(cur()-1);}
     });
@@ -1774,6 +1796,20 @@ function playCine(id,done){
   [].forEach.call(w.querySelectorAll('.rvb'),function(b){b.addEventListener('click',function(){go(+b.getAttribute('data-d'));tick();});});
   w.addEventListener('mouseenter',function(){hov=true;});w.addEventListener('mouseleave',function(){hov=false;tick();});
   tick();})();
+</script>
+<script>
+// 학습 자료 안내창 + 홈 애니메이션 건너뛰기
+(function(){
+  var m=document.getElementById('dlm'),H=document.documentElement,hp=document.getElementById('p-home');
+  function close(){m.hidden=true;}
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-dlopen]')){m.hidden=false;var g=m.querySelector('.go');if(g)g.focus({preventScroll:true});return;}
+    if(!m.hidden){if(e.target===m||e.target.closest('[data-dlclose]')||e.target.closest('[data-dlgo]'))close();return;}
+    if(hp&&!hp.hidden&&!H.classList.contains('hskip')&&!e.target.closest('a,button,[data-go]'))H.classList.add('hskip');
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close();});
+  if(hp)new MutationObserver(function(){if(hp.hidden)H.classList.remove('hskip');}).observe(hp,{attributes:true,attributeFilter:['hidden']});
+})();
 </script>
 </body>
 </html>
