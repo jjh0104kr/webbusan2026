@@ -16,7 +16,7 @@
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#f6f3ec;--ink:#23262b;--sub:#6b6f76;--line:#ddd7c9;--card:#fffdf8;--accent:#2f4a5e;--hl:#9a3b26;--sage:#5d7d63;--ease:cubic-bezier(.2,.7,.2,1);--mast:116px;--tabs:50px;--chrome:calc(var(--mast) + var(--tabs))}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -456,7 +456,7 @@
 
   /* 학습 자료 안내 / 장소 링크 / 카드 창 / 카드 전환 */
   .dlw{position:relative;display:inline-flex}
-  .dlw small{position:absolute;top:calc(100% + 3px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9.5px;line-height:1.3;letter-spacing:0;color:rgba(255,255,255,.75);text-shadow:0 1px 6px rgba(0,0,0,.55);animation:fade 1s ease 2.4s both}
+  .dlw small{position:absolute;top:calc(100% + 3px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9.5px;line-height:1.3;letter-spacing:0;color:rgba(255,255,255,.75);text-shadow:0 1px 6px rgba(0,0,0,.55);animation:fade 1.2s ease 4.4s both}
   .hero .acts{padding-bottom:18px}
   .pl{cursor:pointer;border-radius:2px;padding:0 1px;background:linear-gradient(transparent 36%,rgba(222,200,160,.55) 36%) no-repeat 0 0/0% 100%;animation:sweep .9s var(--ease) 1.3s forwards;transition:background-color .25s,box-shadow .25s}
   .pl:hover,.pl:focus-visible{background-color:rgba(222,200,160,.3);outline:none;box-shadow:0 2px 0 rgba(190,160,110,.8)}
@@ -714,20 +714,259 @@
   @media(max-width:859px){.ttl{padding-left:0;padding-right:clamp(22px,8vw,40px)}}
   @media(max-width:859px){.eyebrow{display:none}}
   @media(min-width:860px){
-    .hin{align-items:flex-start;justify-content:center;text-align:left;padding:60px clamp(48px,8vw,130px) 80px}
-    .eyebrow{justify-content:flex-start;gap:0;font-size:12px;margin-bottom:14px}
-    .eyebrow::before,.eyebrow::after{display:none}
-    .ttl{padding:20px 40px 20px 0;margin-bottom:18px}
+    .hin{align-items:center;justify-content:flex-end;text-align:center;padding:40px 48px clamp(22px,4.5dvh,44px)}
+    .ttl{padding:clamp(10px,2dvh,18px) 44px;margin-bottom:clamp(10px,2dvh,18px)}
     .mb{display:inline}
-    .hero h1{font-size:clamp(40px,min(5.6vw,9.5dvh),78px);line-height:1.2;white-space:normal;margin-bottom:14px!important}
-    .hero .tag{font-size:clamp(14px,1.45vw,19px);line-height:1.65;margin-bottom:0}
-    .hero .acts{position:absolute;right:clamp(36px,6vw,100px);bottom:clamp(30px,7dvh,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:460px;margin:0;padding-bottom:22px;gap:10px}
-    .hero .acts .btn.solid{grid-column:1/-1;text-align:center;padding:18px 0;font-size:19px}
-    .hero .acts .btn.ghost,.hero .acts .btn.qrb{padding:15px 0;font-size:16px;text-align:center;justify-content:center;min-width:0}
+    .hero h1{font-size:clamp(34px,min(4.6vw,7.2dvh),62px);line-height:1.18;white-space:nowrap;margin-bottom:0!important}
+    .hero .tag{font-size:clamp(14px,1.4vw,18px);line-height:1.6;margin-bottom:clamp(20px,4.5dvh,44px)}
+    .hero .acts{position:static;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:420px;max-width:100%;margin:0;padding-bottom:20px}
+    .hero .acts .btn.solid{grid-column:1/-1;text-align:center;padding:15px 0;font-size:18px;margin-bottom:clamp(6px,1.8dvh,16px)}
+    .hero .acts .btn.ghost,.hero .acts .btn.qrb{padding:12px 0;font-size:15px;text-align:center;justify-content:center;min-width:0}
     .hero .acts .dlw{display:flex}
     .hero .acts .dlw .btn{flex:1}
     .hero .acts .dlw small{left:50%;transform:translateX(-50%);font-size:11px}
   }
+
+  /* 홈 등장: 기억이 흐릿하게 떠오르듯 */
+  @keyframes recall{0%{opacity:0;filter:blur(18px) drop-shadow(0 4px 18px rgba(0,0,0,.45));letter-spacing:.28em;transform:scale(1.05)}60%{opacity:.9}100%{opacity:1;filter:blur(0) drop-shadow(0 4px 18px rgba(0,0,0,.45));letter-spacing:0;transform:none}}
+  @keyframes mist{0%{opacity:0;filter:blur(10px);transform:translateY(10px)}100%{opacity:1;filter:blur(0);transform:none}}
+  @keyframes drawl{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .ttl{position:relative;border:0!important}
+  .ttl::before,.ttl::after{content:"";position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,.6);transform-origin:center}
+  .ttl::before{top:0}.ttl::after{bottom:0}
+  @media(max-width:859px){.ttl::before,.ttl::after{right:clamp(22px,8vw,40px);transform-origin:left}}
+  .home:not([hidden]) .hin > .ttl{animation:none}
+  .home:not([hidden]) .ttl::before,.home:not([hidden]) .ttl::after{animation:drawl 1.8s cubic-bezier(.22,.7,.2,1) .2s both}
+  .home:not([hidden]) .ttl h1{animation:recall 2.6s cubic-bezier(.22,.6,.2,1) .5s both}
+  .home:not([hidden]) .hin > .tag{animation:mist 2s ease-out 1.9s both}
+  .home:not([hidden]) .hin > .acts{animation:mist 1.8s ease-out 2.9s both}
+
+  .bar .qrb.lang{display:inline-flex;align-items:center;gap:6px}
+  .bar .qrb.lang .gl{flex:none}
+  @media(max-width:859px){.bar .qrb.lang{padding:7px 9px;gap:4px;font-size:11.5px}.bar .qrb.lang .gl{width:14px;height:14px}}
+  /* 버튼 등장: 빠르게 톡 */
+  @keyframes tap{0%{opacity:0;transform:translateY(16px) scale(.94)}70%{transform:translateY(-2px) scale(1.01)}100%{opacity:1;transform:none}}
+  .home:not([hidden]) .hin > .acts{animation:none}
+  .home:not([hidden]) .hin > .acts > *{animation:tap .5s cubic-bezier(.2,.8,.3,1) both}
+  .home:not([hidden]) .hin > .acts > .solid{animation-delay:2.7s}
+  .home:not([hidden]) .hin > .acts > :nth-child(2){animation-delay:2.9s}
+  .home:not([hidden]) .hin > .acts > :nth-child(3){animation-delay:3s}
+  .home:not([hidden]) .hin > .acts > :nth-child(4){animation-delay:3.1s}
+
+  @media(max-width:859px){
+    .bar .ctas{display:flex;flex-wrap:nowrap;gap:6px;flex:none;align-items:center}
+    .bar .brand{min-width:0;flex:1 1 auto}
+    .bar .brand b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+    .bar .ctas .btn{padding:7px 9px!important;min-height:36px!important;font-size:11.5px!important;letter-spacing:.03em!important;white-space:nowrap}
+    .bar .ctas .cta{padding:7px 11px!important}
+  }
+
+  @media(max-width:859px){.bar .brand b{font-size:15px}}
+  @media(max-width:399px){.bar .qrb.lang span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.bar .ctas .btn.lang{padding:7px 9px!important}}
+
+  /* 언어 버튼: 아주 작고 색 없는 알약형 */
+  .bar .ctas .btn.lang,.bar .qrb.lang{padding:4px 9px!important;min-height:0!important;font-size:10.5px!important;letter-spacing:.08em!important;border-radius:999px;background:transparent!important;border:1px solid rgba(60,64,70,.28)!important;color:var(--sub)!important;gap:5px;transition:background .2s,border-color .2s}
+  .bar .ctas .btn.lang:hover{background:rgba(60,64,70,.07)!important;border-color:rgba(60,64,70,.5)!important;color:var(--sub)!important}
+  .bar .qrb.lang .gl{width:12px;height:12px}
+  @media(max-width:859px){.bar .ctas .btn.lang{padding:4px 8px!important;font-size:10px!important}}
+  @media(max-width:339px){.bar .qrb.lang span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+
+  /* 게임 시작 버튼: 게임 분위기에 맞는 차분한 크림색 */
+  .hero .btn.solid{background:rgba(244,234,214,.94)!important;border-color:transparent!important;color:#2c2216!important;box-shadow:0 6px 22px rgba(0,0,0,.38)!important}
+  .hero .btn.solid:hover{background:#fff7e6!important;box-shadow:0 8px 26px rgba(0,0,0,.45)!important}
+
+  /* 상단바 버튼: 담백한 hover */
+  .bar .btn:hover{transform:none!important;box-shadow:none!important}
+  .bar .btn::before{display:none!important}
+  .bar .btn{animation:none!important}
+  /* 홈 게임 시작 버튼 등장 */
+  .home:not([hidden]) .hero .hin > .acts > .btn.solid{animation:tap .5s cubic-bezier(.2,.8,.3,1) 2.7s both}
+
+  .lg{display:inline-grid}
+  .lg>span{grid-area:1/1;text-align:center}
+  .lg>[data-l=ko]{visibility:hidden}
+  html.ko .lg>[data-l=en]{visibility:hidden}
+  html.ko .lg>[data-l=ko]{visibility:visible}
+  .csub{margin:-4px 0 14px;font-size:clamp(15px,1.5vw,18px);letter-spacing:.14em;color:var(--sub)}
+
+  /* 부제: 윗줄은 빠르게 선명하게, 아랫줄은 한 글자씩, 동행은 두 글자가 나란히 */
+  @keyframes chr{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+  @keyframes walk{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
+  .tag .tg{color:#ffd98e;white-space:nowrap}
+  .tag .tg i{font-style:normal;display:inline-block}
+  .home:not([hidden]) .hin > .tag{animation:none}
+  .home:not([hidden]) .tag .l1{display:inline-block;animation:mist 1.2s ease-out .9s both}
+  .home:not([hidden]) .tag .ch{display:inline-block;animation:chr .4s ease-out both;animation-delay:calc(1.7s + var(--i) * .055s)}
+  .home:not([hidden]) .tag .tg i{animation:walk .55s cubic-bezier(.22,.7,.2,1) 2.45s both}
+  .home:not([hidden]) .tag .tg i:nth-child(2){animation-delay:2.5s}
+  .home:not([hidden]) .hin > .acts > .btn.solid{animation-delay:3.1s}
+  .home:not([hidden]) .hin > .acts > :nth-child(2){animation-delay:3.3s}
+  .home:not([hidden]) .hin > .acts > :nth-child(3){animation-delay:3.4s}
+  .home:not([hidden]) .hin > .acts > :nth-child(4){animation-delay:3.5s}
+
+  .tag .ch.em{font-weight:700;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+  .hero .btn.solid,.hero .dlw .btn{font-weight:700!important}
+
+  /* 피란수도 부산: 동행과 같은 색, 글자가 또렷하게 새겨지듯 */
+  @keyframes stamp{0%{opacity:0;transform:scale(1.7);filter:blur(7px)}100%{opacity:1;transform:none;filter:blur(0)}}
+  .tag .ch.em{color:#ffd98e!important}
+  .home:not([hidden]) .tag .ch.em{animation:stamp .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(1.7s + var(--i) * .09s)}
+  /* 제작자 문구 강조 */
+  @keyframes sweep{to{background-position:-250% 0}}
+  .hl2{font-weight:700;background:linear-gradient(100deg,#2f4a5e 35%,#d49a3a 50%,#2f4a5e 65%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:sweep 4.5s linear infinite}
+  .foot{font-weight:700}
+
+  /* 역할 설명: 마우스를 올리면 회색으로 바뀌며 설명이 나타남 (클릭 동작 없음) */
+  .pill{position:relative;cursor:default;outline:none;transition:color .25s,box-shadow .25s,background .25s;border-radius:6px}
+  .pill:hover,.pill:focus{color:#80848a!important;background:rgba(120,124,130,.13);box-shadow:0 0 0 7px rgba(120,124,130,.13)}
+  .pill .tip{position:absolute;left:0;top:calc(100% + 14px);z-index:8;width:max-content;max-width:min(380px,78vw);white-space:normal;text-align:left;font-size:13px;line-height:1.65;letter-spacing:0;font-weight:400;color:#4a4d52;background:#eceae5;border:1px solid #d6d3cb;border-radius:8px;padding:11px 15px;box-shadow:0 8px 24px rgba(0,0,0,.1);opacity:0;visibility:hidden;transform:translateY(-6px);pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.2,.8,.3,1),visibility .3s}
+  .pill:hover .tip,.pill:focus .tip{opacity:1;visibility:visible;transform:none}
+
+  .pill:hover,.pill:focus{background:none!important;box-shadow:none!important;color:inherit!important}
+  .pill .pl{display:inline-block;border-radius:6px;transition:color .25s,background .25s,box-shadow .25s}
+  .pill:hover .pl,.pill:focus .pl{color:#80848a;background:rgba(120,124,130,.15);box-shadow:0 0 0 6px rgba(120,124,130,.15)}
+  .crow:has(.pill:hover),.crow:has(.pill:focus){position:relative;z-index:10}
+
+  /* 행 전체에 마우스를 올려도 역할 설명 표시 */
+  .crow{cursor:default;position:relative}
+  .crow:hover .pill .pl{color:#80848a;background:rgba(120,124,130,.15);box-shadow:0 0 0 6px rgba(120,124,130,.15)}
+  .crow:hover .pill .tip{opacity:1;visibility:visible;transform:none}
+  .crow:hover{z-index:10}
+
+  /* 등장인물 */
+  .charp .wide{max-width:1000px;overflow-y:auto;scrollbar-width:thin}
+  .chars{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+  .chc{display:grid;grid-template-columns:152px 1fr;gap:20px;align-items:start;padding:18px 0;border-top:1px solid var(--line)}
+  .cpic{aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:var(--bg)}
+  .cpic img{width:100%;height:100%;object-fit:cover;display:block;mix-blend-mode:multiply;transition:transform .8s var(--ease)}
+  .chc:hover .cpic img{transform:scale(1.04)}
+  .ctag{display:block;font-size:11.5px;letter-spacing:.06em;color:var(--sub);margin-bottom:6px}
+  .ctx h3{font-family:inherit;font-size:19px;line-height:1.3;margin:0 0 10px;color:var(--ink);font-weight:700}
+  .ctx h3 .cn2{display:inline-block;margin-left:8px;font-size:13px;font-weight:500;color:var(--accent);letter-spacing:.04em}
+  .ctx h3 .cn2::before{content:"(";margin-right:1px}.ctx h3 .cn2::after{content:")"}
+  .ctx p{margin:0;font-size:13px;line-height:1.68;color:#4a4d52;word-break:keep-all}
+  @media(max-width:1239px){.charp .wide{padding-left:76px;padding-right:76px}}
+  @media(max-width:1000px){.chars{grid-template-columns:1fr}}
+  @media(max-width:859px){
+    .charp .wide{padding:20px 20px 84px!important;overflow:visible}
+    .chc{grid-template-columns:104px 1fr;gap:16px;padding:18px 0}
+    .ctx h3{font-size:17px;margin-bottom:8px}
+    .ctx p{font-size:13px;line-height:1.7}
+  }
+  @media(max-width:339px){.chc{grid-template-columns:1fr}.cpic{max-width:200px}}
+  /* 등장인물 애니메이션 */
+  @keyframes cimg{from{clip-path:inset(0 0 100% 0);transform:scale(1.1)}to{clip-path:inset(0);transform:none}}
+  .panel.charp:not([hidden]) .chc{animation:up .9s var(--ease) both;animation-delay:calc(.45s + var(--i) * .18s)}
+  .panel.charp:not([hidden]) .cpic img{animation:cimg 1.1s var(--ease) both;animation-delay:calc(.55s + var(--i) * .18s)}
+  .panel.charp:not([hidden]) .ctx > *{animation:mist 1s ease-out both}
+  .panel.charp:not([hidden]) .ctx > :nth-child(1){animation-delay:calc(.9s + var(--i) * .18s)}
+  .panel.charp:not([hidden]) .ctx > :nth-child(2){animation-delay:calc(1.05s + var(--i) * .18s)}
+  .panel.charp:not([hidden]) .ctx > :nth-child(3){animation-delay:calc(1.2s + var(--i) * .18s)}
+
+  /* 만든 사람들: 행 전체 hover + 한 줄 안내창 */
+  .crows{overflow:visible}
+  .crow{margin:0 -16px;padding-left:16px!important;padding-right:16px!important;border-radius:8px;transition:background .3s ease}
+  .crow:hover{background:rgba(120,124,130,.12)}
+  .crow:hover .pill .pl,.pill:hover .pl,.pill:focus .pl{background:none!important;box-shadow:none!important;color:#6f7378}
+  .pill .tip{white-space:nowrap!important;max-width:none!important;color:#3f4247}
+  .pill .tip b{font-weight:700;color:#23262a}
+  .crow:hover .pill .tip{background:#f9f8f5}
+  @media(max-width:859px){.crow{margin:0 -10px;padding-left:10px!important;padding-right:10px!important}.pill .tip{white-space:normal!important;max-width:min(380px,84vw)!important}}
+
+  /* 출처 */
+  .srcs{margin-top:34px}
+  .srcs .label{display:block;margin-bottom:10px}
+  .sd{border-top:1px solid var(--line)}
+  .sd:last-child{border-bottom:1px solid var(--line)}
+  .sd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:15px 2px;font-size:14px;font-weight:700;color:var(--ink);letter-spacing:.02em}
+  .sd summary::-webkit-details-marker{display:none}
+  .sd summary i{position:relative;width:12px;height:12px;flex:none}
+  .sd summary i::before,.sd summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--sub);transform:translate(-50%,-50%);transition:transform .3s var(--ease),opacity .3s}
+  .sd summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+  .sd[open] summary i::after{transform:translate(-50%,-50%) rotate(0);opacity:0}
+  .sd:hover summary{color:var(--accent)}
+  .sb{padding:2px 2px 18px;animation:mist .45s ease-out both}
+  .sb h4{margin:14px 0 6px;font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.03em}
+  .sb h4:first-child{margin-top:2px}
+  .sb ul{list-style:none;margin:0;padding:0}
+  .sb li{position:relative;padding:3px 0 3px 14px;font-size:12.5px;line-height:1.65;color:#5a5d63;word-break:keep-all}
+  .sb li::before{content:"·";position:absolute;left:3px;color:var(--sub)}
+  .sb a{color:inherit;text-decoration:underline;text-underline-offset:2px;word-break:break-all}
+  .sb a:hover{color:var(--accent)}
+  .panel:not([hidden]) .srcs{animation:up .8s var(--ease) .8s both}
+  .wide:has(.srcs){justify-content:flex-start!important;overflow-y:auto;scrollbar-width:thin;padding-bottom:40px}
+
+  /* 제작 도구 */
+  .tools{margin-top:30px}
+  .tools .label{display:block;margin-bottom:10px}
+  .tr{display:flex;gap:26px;align-items:baseline;padding:13px 2px;border-top:1px solid var(--line)}
+  .tr:last-child{border-bottom:1px solid var(--line)}
+  .tk{flex:0 0 250px;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+  .tv{font-size:14px;color:var(--ink)}
+  @media(max-width:859px){.tr{flex-direction:column;gap:3px}.tk{flex:none}}
+  .panel:not([hidden]) .tools{animation:up .8s var(--ease) 1s both}
+  .panel:not([hidden]) .tr{animation:mist .8s ease-out both}
+  .panel:not([hidden]) .tr:nth-of-type(1){animation-delay:1.1s}
+  .panel:not([hidden]) .tr:nth-of-type(2){animation-delay:1.25s}
+  .panel:not([hidden]) .tr:nth-of-type(3){animation-delay:1.4s}
+
+  /* 만든 사람들: 제작자 / 출처 / AI 도구 */
+  .ctabs{display:flex;gap:6px;margin:4px 0 24px;border-bottom:1px solid var(--line)}
+  .ct{font:inherit;font-size:14px;font-weight:500;letter-spacing:.03em;color:var(--sub);background:none;border:0;padding:11px 18px;cursor:pointer;position:relative;transition:color .25s}
+  .ct::after{content:"";position:absolute;left:18px;right:18px;bottom:-1px;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .35s var(--ease)}
+  .ct:hover{color:var(--ink)}
+  .ct.on{color:var(--accent);font-weight:700}
+  .ct.on::after{transform:scaleX(1)}
+  .csec:not([hidden]){animation:up .6s var(--ease) both}
+  .srcs,.tools{margin-top:0}
+  .panel:not([hidden]) .srcs,.panel:not([hidden]) .tools{animation:none}
+  .sd:first-child{border-top:0}
+  .tr:first-child{border-top:0}
+  @media(max-width:859px){.ct{padding:10px 14px;font-size:13.5px}.ct::after{left:14px;right:14px}}
+
+  .sb a{text-decoration:none;border-bottom:1px solid rgba(60,64,70,.28);word-break:keep-all;transition:color .2s,border-color .2s}
+  .sb a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .sb a::after{content:" ↗";font-size:.85em;color:var(--sub)}
+
+  /* 크레딧 등장 애니메이션 통일 */
+  .csec:not([hidden]){animation:none}
+  .panel:not([hidden]) .crow,.panel:not([hidden]) .sd,.panel:not([hidden]) .tr{animation:up .7s var(--ease) both}
+  .panel:not([hidden]) .crow:nth-child(1),.panel:not([hidden]) .sd:nth-child(1),.panel:not([hidden]) .tr:nth-of-type(1){animation-delay:.2s}
+  .panel:not([hidden]) .crow:nth-child(2),.panel:not([hidden]) .sd:nth-child(2),.panel:not([hidden]) .tr:nth-of-type(2){animation-delay:.32s}
+  .panel:not([hidden]) .crow:nth-child(3),.panel:not([hidden]) .sd:nth-child(3),.panel:not([hidden]) .tr:nth-of-type(3){animation-delay:.44s}
+  .panel:not([hidden]) .sd:nth-child(4){animation-delay:.56s}
+  .panel:not([hidden]) .sd:nth-child(5){animation-delay:.68s}
+  /* 출처 아코디언: 열리면 회색 박스 */
+  .sd{border-radius:8px;transition:background .3s ease}
+  .sd summary{padding-left:16px;padding-right:16px}
+  .sd .sb{padding-left:16px;padding-right:16px}
+  .sd:hover,.sd[open]{background:rgba(120,124,130,.12)}
+  .sd:hover summary{color:var(--ink)}
+  .aiw{display:inline-flex;align-items:center;gap:7px;margin-right:18px;white-space:nowrap}
+  .aiw:last-child{margin-right:0}
+  .ai{width:16px;height:16px;object-fit:contain;flex:none}
+  @media(max-width:859px){.aiw{margin-right:12px}}
+
+  /* 제작 소감 창 */
+  .rvw{margin-top:34px;border:0;border-radius:0;background:none;overflow:visible}
+  .rvh{display:flex;align-items:center;justify-content:space-between;padding:0 0 12px;border-bottom:1px solid var(--line);background:none}
+  .rvt{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+  .rvc{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--sub)}
+  .rvn b{color:var(--ink);font-weight:700}
+  .rvb{width:26px;height:26px;border:1px solid var(--line);border-radius:50%;background:none;color:var(--sub);font-size:16px;line-height:1;cursor:pointer;transition:background .25s,color .25s}
+  .rvb:hover{background:rgba(120,124,130,.15);color:var(--ink)}
+  .rvbody{display:grid;padding:18px 0 20px;border-bottom:1px solid var(--line)}
+  .kv{font-weight:700;color:var(--ink);background:linear-gradient(transparent 58%,rgba(233,165,75,.38) 0)}
+  .rv{grid-area:1/1;margin:0;font-size:14px;line-height:1.9;color:#44474c;word-break:keep-all;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .45s ease,transform .45s var(--ease),visibility 0s .45s}
+  .rv.on{opacity:1;visibility:visible;transform:none;transition:opacity .45s ease .1s,transform .45s var(--ease) .1s,visibility 0s}
+  .panel:not([hidden]) .rvw{animation:up .7s var(--ease) .56s both}
+  .wide:has(.rvw){justify-content:flex-start!important;overflow-y:auto;scrollbar-width:thin;padding-bottom:40px}
+  /* 제목 아래 붉은 선: 모든 페이지 통일 */
+  .hhead h2,.chead h2{position:relative;padding-bottom:10px}
+  .hhead h2::after,.chead h2::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:2px;background:var(--hl);transform-origin:left;animation:wipe .9s var(--ease) .5s both}
+  .chead{text-align:left}
+  .chead .hl2{font-size:1em;color:var(--accent);background:linear-gradient(transparent 62%,rgba(233,165,75,.38) 0);-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:currentColor;animation:none;text-decoration:none}
+  .bar .brand small{align-self:auto;margin-top:2px;padding:0;background:none;color:var(--sub);border-radius:0;font-size:9.5px;font-weight:400;letter-spacing:.06em;line-height:1.3}
 </style>
 </head>
 <body class="loading">
@@ -735,19 +974,19 @@
 <noscript><style>.loader{display:none}body.loading > :not(.loader):not(script):not(noscript){display:block}</style></noscript>
 
 <header class="bar">
-  <a class="brand" href="#home" data-go="home"><b>피란의 기억을 잇다</b><small>광안중학교 역사심화탐구동아리</small></a>
+  <a class="brand" href="#home" data-go="home"><b>피란의 기억을 잇다</b><small>광안중 2026 역사심화탐구동아리</small></a>
   <ul class="tabs" id="tabs">
   <li><a href="#home" data-go="home">HOME</a></li>
   <li class="has-sub before"><a href="#cards" data-go="cards" data-group="before">BEFORE PLAY</a>
     <div class="sub"><a href="#cards" data-go="cards">CARD NEWS</a><a href="#earth" data-go="earth">GOOGLE EARTH</a><a href="#unesco" data-go="unesco">UNESCO</a></div>
   </li>
   <li class="has-sub" id="storyli"><a href="#prologue" data-go="prologue" data-group="story">STORY</a>
-    <div class="sub"><a href="#prologue" data-go="prologue">PROLOGUE</a><a href="#ch1" data-go="ch1">CH 1</a><a href="#ch2" data-go="ch2">CH 2</a><a href="#ch3" data-go="ch3">CH 3</a><a href="#ch4" data-go="ch4">CH 4</a><a href="#ending" data-go="ending">ENDING</a></div>
+    <div class="sub"><a href="#prologue" data-go="prologue">PROLOGUE</a><a href="#ch1" data-go="ch1">CH 1</a><a href="#ch2" data-go="ch2">CH 2</a><a href="#ch3" data-go="ch3">CH 3</a><a href="#ch4" data-go="ch4">CH 4</a><a href="#ending" data-go="ending">ENDING</a><a href="#characters" data-go="characters">CHARACTERS</a></div>
   </li>
   <li><a href="#how" data-go="how">HOW TO PLAY</a></li>
   <li><a href="#credits" data-go="credits">CREDITS</a></li>
 </ul>
-  <span class="ctas"><button type="button" class="btn qrb" data-qr>QR</button><a class="btn solid cta" href="https://jjh0104kr.github.io/busan2026/">PLAY GAME ↗</a></span>
+  <span class="ctas"><button type="button" class="btn qrb lang" id="lang" aria-label="Language"><svg class="gl" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg><span>KOR</span></button><a class="btn solid cta" href="https://jjh0104kr.github.io/busan2026/" target="_blank" rel="noopener">PLAY GAME ↗</a></span>
 </header>
 
 <a class="snav l" id="snL" href="#prologue" data-go="prologue" aria-label="이전 스토리" hidden>←</a>
@@ -760,12 +999,12 @@
       <button type="button" class="fxb" id="fxb" aria-pressed="true">ANIMATION <b>ON</b></button>
       <div class="hin">
         <div class="ttl"><h1>피란의<br class="mb"> 기억을 잇다</h1></div>
-        <p class="tag">할아버지와 손주가 잊어버린 기억을 찾아 떠나는<br>피란수도 부산에서의 동행</p>
+        <p class="tag"><span class="l1">할아버지와 손주가 잊어버린 기억을 찾아 떠나는</span><br><span class="l2">피란수도 부산에서의 <span class="tg"><i>동</i><i>행</i></span></span></p>
         <div class="acts">
-          <a class="btn solid" href="https://jjh0104kr.github.io/busan2026/">게임 시작 ↗</a>
+          <a class="btn solid" href="https://jjh0104kr.github.io/busan2026/" target="_blank" rel="noopener">게임 시작 ↗</a>
           <button type="button" class="btn ghost qrb" data-qr>QR</button>
           <span class="dlw"><a class="btn ghost" href="files/learning-material.zip" download="피란의 기억을 잇다 학습 자료 및 교사용 가이드북.zip">학습 자료 다운</a><small>학생·교사용 활동지, 가이드북 포함</small></span>
-          <a class="btn ghost" href="https://forms.gle/GHzv9nTCaqPWgsQt8">만족도 조사</a>
+          <a class="btn ghost" href="https://forms.gle/GHzv9nTCaqPWgsQt8" target="_blank" rel="noopener">만족도 조사</a>
         </div>
       </div>
     </div>
@@ -1053,18 +1292,75 @@
     </div>
   </section>
 
+
+  <section class="panel charp" id="p-characters" hidden>
+    <div class="wide">
+      <div class="chead">
+        <span class="label">STORY</span>
+        <h2>CHARACTERS</h2>
+        <p class="d one">「피란의 기억을 잇다」의 주요 등장인물을 소개합니다.</p>
+      </div>
+      <div class="chars">
+        <article class="chc" style="--i:0">
+          <div class="cpic"><img src="img/char-grandpa.webp" alt="할아버지"/></div>
+          <div class="ctx">
+            <span class="ctag">현재</span>
+            <h3>할아버지<span class="cn2">백금동</span></h3>
+            <p>치매로 가족의 얼굴과 이름조차 자주 잊는 요양원의 노인이다. 소중한 사람들이 먼저 세상을 떠난 아픔 때문에 기억을 감춰 두었다가, 결국 그 기억의 단서마저 잊고 말았다. 손자와 함께 여러 기억의 단서를 따라가며 부모님과 아내(이금순)에 대한 기억을 하나씩 되찾는다.</p>
+          </div>
+        </article>
+        <article class="chc" style="--i:1">
+          <div class="cpic"><img src="img/char-grandson.webp" alt="손자"/></div>
+          <div class="ctx">
+            <span class="ctag">현재</span>
+            <h3>손자</h3>
+            <p>할아버지를 곁에서 돌보는 손자(손주)다. 할아버지가 자신을 알아보지 못해도 "괜찮아요"라고 웃으며 받아들인다. "할아버지 인생을 같이 찾아보자"며 기억을 되찾는 여정을 이끈다. 짐을 나르고 비석을 복원하는 등 직접 몸으로 도우면서, 할아버지가 겪은 피란의 삶을 함께 느낀다.</p>
+          </div>
+        </article>
+        <article class="chc" style="--i:2">
+          <div class="cpic"><img src="img/char-young-grandpa.webp" alt="어린 할아버지"/></div>
+          <div class="ctx">
+            <span class="ctag">6·25 전쟁 당시 · 15세</span>
+            <h3>어린 할아버지<span class="cn2">백금동</span></h3>
+            <p>6·25 전쟁 때 부모님과 아미동 비석마을로 피란 온 15살 소년이다. 주말마다 부산항에서 아버지의 하역 일을 돕고, 모은 돈으로 어머니께 비녀를 사 드릴 만큼 가족을 아끼는 마음이 깊다. 보수동에서 같은 책을 잡은 소녀(이금순)에게 책을 양보하고, 어려운 친구 상철이를 집으로 데려오는 따뜻하고 의리 있는 성격이다. 보수동에서 첫사랑인 이금순을 만나고, 이금순과 사랑에 빠진다.</p>
+          </div>
+        </article>
+        <article class="chc" style="--i:3">
+          <div class="cpic"><img src="img/char-young-grandma.webp" alt="어린 할머니"/></div>
+          <div class="ctx">
+            <span class="ctag">6·25 전쟁 당시 · 15세</span>
+            <h3>어린 할머니<span class="cn2">이금순</span></h3>
+            <p>할아버지와 같은 15살로, 보수동 책방골목에서 처음 만난 소녀이다. 피란 와서 부산 가족이 내어 준 사랑방에서 지내다가, 더는 부담을 주기 싫어 스스로 나와 우암동 피란민 수용소로 거처를 옮겼다. 책을 좋아하고 당찬 성격이다. 우암동으로 떠난 뒤에도 어린 할아버지와의 약속을 믿고 기다리고, 오랫동안 백금동과 지내며 연애하다가 결혼하며 백금동의 아내가 된다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="panel" id="p-credits" hidden>
     <div class="wide">
       <div class="chead">
-        <span class="label">CREDITS</span>
-        <h2>만든 사람들</h2>
-        <p class="d one">광안중학교 역사심화탐구동아리 [굳세어라 광안아] 학생들이 부산 피란 역사 현장을 답사하고 함께 만들었습니다.</p>
+        <h2>CREDITS</h2>
+        <p class="d one"><span class="hl2">광안중학교 2026학년도 역사심화탐구 동아리 [굳세어라 광안아]</span> 학생들이 부산 피란 역사 현장을 답사하고 함께 만들었습니다.</p>
       </div>
-      <div class="crows">
-        <div class="crow"><span class="pill a">총괄 · 동아리 지도 교사</span><div class="nm"><span><small class="rl">광안중학교 역사 교사</small>노재훈</span></div></div>
-        <div class="crow"><span class="pill b">3학년 학생</span><div class="nm"><span>김수빈</span><span>박규리</span><span>박정연</span><span>예지은</span><span>이서연</span><span>김아윤</span><span>박주영</span><span>박차미</span></div></div>
-        <div class="crow"><span class="pill c">2학년 학생</span><div class="nm"><span>조은님</span><span>김자연</span><span>변나현</span><span>임효진</span><span>김태희</span><span>박경린</span><span>유연서</span><span>김나연</span></div></div>
+      <div class="ctabs" role="tablist" style="--k:0">
+        <button type="button" class="ct on" data-sec="crew" data-k="0" role="tab" aria-selected="true"><span class="lg"><span data-l="en">CREATORS</span><span data-l="ko">제작자</span></span></button>
+        <button type="button" class="ct" data-sec="src" data-k="1" role="tab" aria-selected="false"><span class="lg"><span data-l="en">SOURCES</span><span data-l="ko">출처</span></span></button>
+        <button type="button" class="ct" data-sec="tool" data-k="2" role="tab" aria-selected="false"><span class="lg"><span data-l="en">AI TOOLS</span><span data-l="ko">AI 도구</span></span></button>
       </div>
+      <div class="csec" data-s="crew"><div class="crows">
+        <div class="crow"><span class="pill a" tabindex="0"><span class="pl">동아리 지도 교사</span><span class="tip">동아리 <b>운영 총괄</b> · 제작 과정 총괄 · 클로드 <b>코딩</b> 구현</span></span><div class="nm"><span><small class="rl">광안중학교 역사 교사</small>노재훈</span></div></div>
+        <div class="crow"><span class="pill b" tabindex="0"><span class="pl">3학년 학생</span><span class="tip"><b>CH 2</b> · <b>CH 4</b> <b>스토리</b> 기획 · <b>프롬프트</b> 고안 · <b>디버깅</b> 작업 실시 · <b>카드뉴스</b> 제작 · <b>구글 어스</b> 컨텐츠 제작</span></span><div class="nm"><span>김수빈</span><span>박규리</span><span>박정연</span><span>예지은</span><span>이서연</span><span>김아윤</span><span>박주영</span><span>박차미</span></div></div>
+        <div class="crow"><span class="pill c" tabindex="0"><span class="pl">2학년 학생</span><span class="tip"><b>CH 1</b> · <b>CH 3</b> <b>스토리</b> 기획 · <b>프롬프트</b> 고안 · <b>디버깅</b> 작업 실시 · <b>카드뉴스</b> 제작 · <b>구글 어스</b> 컨텐츠 제작</span></span><div class="nm"><span>조은님</span><span>김자연</span><span>변나현</span><span>임효진</span><span>김태희</span><span>박경린</span><span>유연서</span><span>김나연</span></div></div>
+      </div>
+      <div class="rvw" id="rvw"><div class="rvh"><span class="rvt">동아리원의 제작 소감</span><span class="rvc"><button type="button" class="rvb" data-d="-1" aria-label="이전 소감">‹</button><span class="rvn"><b id="rvi">1</b> / 16</span><button type="button" class="rvb" data-d="1" aria-label="다음 소감">›</button></span></div><div class="rvbody"><p class="rv on">동아리 활동을 하기 전의 저는 친구들과 역사적인 장소에 가도 이미 지난 이야기에 꼭 감정을 담아 슬퍼해야 하나 하고 생각했습니다. 그러나 이번 동아리 활동에서 40계단, 아미동 비석마을 등 여러 역사적인 지역을 다녀와 보니 그 시절 피난민들이 생존하기 위해 노력한 흔적을 볼 수 있었고, 이를 통해 <b class="kv">인간의 생존 의지와 삶을 재건하는 의지</b>를 느꼈습니다. 더불어 피난민들이 남긴 노력과 의지의 흔적을 부산을 사랑하는 마음을 담아 오래오래 보존하고 싶다는 생각이 들었습니다.</p><p class="rv">저는 <b class="kv">인간의 생존 의지와 삶을 재건하는 의지</b>, <b class="kv">부산 지역을 사랑하는 마음</b>, 그리고 <b class="kv">문화유산 보존의 중요성</b>을 배웠습니다. 그 시절 피란민들이 힘든 상황에서도 일자리를 찾고 희망을 놓지 않고 계속 노력하는 모습이 대단하다고 생각했고, 그 모습을 배워야 한다고 느꼈습니다. 저는 힘들 때 포기하고 싶다고 생각한 적이 많은데, 피란민들이 희망을 놓지 않고 계속 나아가려 했다는 것을 알게 된 뒤로는 저도 그분들처럼 포기하지 않으려고 생각했습니다. 또 과거에 남은 흔적을 발견해 그때를 다시 기억하는 것은 우리에게 도움이 될 것이며, 그 시절의 기억을 간직하고 떠올리는 것이 좋다고 생각합니다. 저 역시 지나간 시간도 과거이기 때문에 소중하다고 생각해서 조금씩 기록으로 남기고 있습니다.</p><p class="rv">소 막사에서 지내거나 평생 몸담던 도시를 떠나 피란길에 오른 사람들의 모습에서 그 누구도 꺾을 수 없을 것 같은 의지가 느껴졌습니다. 서로 힘을 합쳐 살아가던 그 시절 사람들을 보며, 우리가 당연하게 누리는 자유가 누군가에게는 목숨을 바쳐서라도 얻고 싶었던 소망이었다는 생각이 들었습니다. 그래서 <b class="kv">자유는 당연한 것이 아니라 누군가의 희생이 있었기에 만들어진 것</b>이라고 생각했습니다.</p><p class="rv">처음에는 평화가 왜 그렇게 중요한지 잘 몰랐습니다. 그런데 우암동 소막마을에서 사람들이 소가 살던 공간에 이불로 가벽을 세우고 한 가족이 살았다는 사실을 보고, <b class="kv">평화로웠다면 가족들이 더 편안하게 살았을 것</b>이라는 생각이 들었습니다. 또 미래 세대가 왜 역사를 알고 배워야 하는지 납득이 되지 않았는데, 우암동 소막마을을 답사하고 나니 이렇게 힘들게 살아온 분들의 <b class="kv">역사를 우리가 기억하지 않으면 점점 잊힐 것</b> 같고, 그렇게 된다면 너무 슬플 것 같다는 생각이 들었습니다.</p><p class="rv">전쟁 때문에 힘든 삶을 보내는 상황에서도 <b class="kv">서로 의지하며 살아가는 피란민들의 감정</b>이 크게 와닿았습니다. 지금 우리 중 대다수는 피란민들이 고되고 아픈 생활을 했다는 것을 모르고 있기 때문에, 이런 교육 활동과 답사, 게임 같은 놀이를 통해 우리나라의 <b class="kv">피란 생활을 쉽고 재미있게 더 널리 알고 기억했으면</b> 좋겠습니다. 이런 교육 프로그램이 의무적으로 확산되기를 바랍니다.</p><p class="rv">동아리 활동 전에는 부산이 피란수도이기 때문에 피란민들이 전쟁을 피해 부산으로 몰려와 힘겹게 사는 사람들이라고만 생각했습니다. 그런데 열악한 환경 속에서도 고향을 생각하고 가족과 생계를 위해 노력하며 새로운 곳에서 삶을 꾸려 나가는 모습을 보고 <b class="kv">인간의 생존 의지와 삶을 재건하는 의지</b>를 배웠습니다. 특히 가분수 주택을 보면서 삶을 재건하려는 의지가 많이 느껴졌습니다. 또 치매로 기억을 잃은 할아버지와 손자가 함께 기억을 찾으러 부산 곳곳을 돌아다니는 이야기를 보면서 <b class="kv">미래 세대의 역할과 기억 계승의 중요성</b>을 느꼈습니다.</p><p class="rv">피란 와서 생활하는 것이 생각보다 정말 힘들었을 것 같다는 생각이 들었습니다. 직접 답사를 하면서 '나라면 여기서 일주일도 제대로 못 살겠다'고 생각했는데, 그마저도 시간이 지나며 보완하고 보충된 모습이라는 것을 생각하니 그때 피란 와서 살아야 했다면 정말 힘들었을 것 같습니다. 물도 집도 부족하고 산에 있어 걷기조차 힘든 환경에서 훨씬 더 많은 어려움을 겪으며 살아간 것도 대단하고, 가족을 위해 열악한 환경에서 임금이 매우 낮거나 제대로 받지 못하면서도 일한 많은 사람도 대단하다고 생각합니다. 이렇게 힘든 상황에서도 살아갈 수 있었던 것은 <b class="kv">살고자 하는 의지가 있었고 서로 도우며 살았기 때문</b>이라고 생각합니다. 또 나 혼자 사는 것도 힘든데 더 나은, 인간다운 삶을 살 수 있도록 원래의 평화롭던 삶을 되찾으려 노력한 사람들도 매우 대단하고 중요한 일을 했다는 것을 알게 되었습니다.</p><p class="rv">처음에는 힘든 상황 속에서도 살아갈 의지를 가질 수 있을지, 서로 돕는 것이 가능할지 의문이 들었습니다. 하지만 동아리 활동을 하고 난 후에는 <b class="kv">서로 돕는 것이 가능하고, 피란민들이 끈기가 있었다</b>는 생각을 하게 되었습니다.</p><p class="rv">역사는 교과서에 나오는 사건이라고만 생각했고, 제가 사는 도시 부산이 품고 있는 역사적 깊이와 아픔에 대해서는 깊이 생각해 본 적이 없었습니다. 평화로운 일상을 누리는 것도 당연하게만 여겼습니다. 동아리 활동을 마친 지금은 일상에서 누리는 <b class="kv">평화와 안전이 얼마나 소중하고 감사한 것인지</b> 느끼게 되었습니다. 또 <b class="kv">우리 지역의 역사와 문화유산을 지키고 보존해야겠다</b>는 생각이 들었습니다.</p><p class="rv">동아리 활동 전에는 피란수도 부산에 대해 잘 몰랐고 크게 관심도 없었습니다. 하지만 활동을 하고 나서는 전쟁의 큰 아픔을 겪은 피란민들이 각자의 자리에서 꿋꿋하게 삶을 이어 갔다는 사실을 배우며, <b class="kv">피란민들을 단지 전쟁의 피해자로만 생각하지 않게</b> 되었습니다. 또 지금 살고 있는 지역인 부산의 역사를 배우며 <b class="kv">이런 아픈 역사를 더욱 아끼고 보존해야겠다</b>는 생각도 들었습니다.</p><p class="rv">식량과 주거 등 전쟁으로 부족한 것이 많았는데도 가족을 돌보고, 가족을 잃고 그리워하면서도 다시 만날 날을 생각하며 살아가고 일하는 그 가치가 매우 소중하고 중요하다고 생각합니다. <b class="kv">부산 지역을 사랑하는 마음과 문화유산 보존의 중요성</b>이 없다면 오래 남아야 할 이 소중한 기억들이 누군가의 기억 속에만 남고 전달되지 않았을 것 같아, 이러한 가치를 느끼고 배웠습니다.</p><p class="rv">부산에 살지만 부산에서 생활한 피란민들에 대해서는 잘 몰랐는데, 부산의 여러 지역에서 피란민들이 생활한 모습을 보며 <b class="kv">부산 지역을 사랑하는 마음과 문화유적 보존의 필요성</b>을 많이 느꼈습니다. 또 원래도 기억 계승이 중요하다고 생각했는데, 할아버지 백금동과 손자의 대화 내용에서 <b class="kv">미래 세대의 역할과 기억 계승의 중요성</b>을 더 느낄 수 있었습니다.</p><p class="rv">피란민들의 삶을 보니 <b class="kv">평화가 너무나 소중하다</b>는 것을 느꼈습니다. 또 다음 세대를 위해 <b class="kv">부산의 문화유산을 보존하는 것이 중요</b>하다는 생각이 들었고, 부산 지역을 사랑하는 마음을 가져야겠다는 마음도 들었습니다.</p><p class="rv">동아리 활동 전에는 부산이 피란수도라는 것만 대충 알았습니다. 하지만 활동을 하고 나서는 무심코 지나치던 공간에 의미를 불어넣을 줄 알게 되었고, <b class="kv">부산이라는 도시에 대한 자부심과 진정한 애향심</b>이 깊어졌습니다.</p><p class="rv">6·25 전쟁 당시의 상황을 자료 조사하며 피란민들의 아픔을 느껴 볼 수 있었습니다. 제가 그 시절 사람이었다면 견디지 못했을 것 같은데, 끝까지 견뎌 낸 사람들이 대단하게 느껴졌습니다. 게임 제작 전에는 전쟁이 단순한 하나의 사건으로만 느껴졌는데, 이번 활동을 하며 전쟁이 많은 사람의 일상을 얼마나 크게 바꿔 놓았는지 알게 되어 <b class="kv">평화의 소중함</b>을 느꼈습니다. 또 피란민들이 부족한 식량과 열악한 환경, 터전을 잃은 상황에서도 살아갈 방법을 찾고, 새로운 환경에서 일자리를 구해 서로 도우며 어려움을 극복한 점에서 <b class="kv">인간의 생존 의지와 삶을 재건하는 의지</b>를 찾아볼 수 있었습니다.</p><p class="rv">6·25 전쟁 당시 피란민들이 먹을 것과 살 곳이 부족해 힘든 생활을 한 모습과, 전쟁 중에도 서로 도우며 살아간 모습을 통해 <b class="kv">평화의 소중함</b>을 배웠습니다. 동아리 활동 전에는 부산의 여러 장소를 그냥 유명한 관광지라고 생각했지만, 활동 후에는 그곳에 전쟁 당시 사람들의 아픔과 노력이 담겨 있다는 것을 알게 되었습니다. 이를 통해 <b class="kv">우리가 누리는 평범한 일상이 당연한 것이 아니라는 생각</b>이 들었고, 앞으로 부산의 역사뿐만 아니라 다른 지역의 역사와 문화유산에도 더 많은 관심을 가져야겠다고 느꼈습니다.</p></div></div></div>
+      <div class="csec" data-s="src" hidden><div class="srcs">
+        <details class="sd" style="--i:0"><summary>전체 · 피란생활<i aria-hidden="true"></i></summary><div class="sb"><ul><li>채영희, 황경숙, 한혜경, 정혜란, 남태수, 남인숙, 문미진, 『6.25 피란생활사: 피란민의 삶과 기억』, 2016</li><li>부산광역시, 『피란수도 부산 구술채록 및 구술자료집 발간 학술연구용역 최종보고서: 피란, 그때 그 사람들』, 2021</li><li>김기섭 외 35인, 『부산 역사 산책』, 2020</li><li><a href="https://www.grandculture.net/busan/toc/GC04219017" target="_blank" rel="noopener">부산역사문화대전, 「피란민의 부산 정착」</a></li><li><a href="https://www.busan.go.kr/wartime_capital/index" target="_blank" rel="noopener">피란수도 부산유산 (부산광역시 공식 사이트)</a></li></ul></div></details><details class="sd" style="--i:1"><summary>챕터 1 · 아미동 비석마을<i aria-hidden="true"></i></summary><div class="sb"><ul><li>심현호, 『아미동 비석마을 사람들 이야기(부산 근현대 구술자료집 5)』, 2019</li><li><a href="https://www.busan.go.kr/wartime_capital_eng/busanheritage08" target="_blank" rel="noopener">부산광역시, 피란수도 부산유산 – 부산 아미동 비석마을 피란민 주거지</a></li><li><a href="https://www.busan.go.kr/nbtnewsBU/1516425" target="_blank" rel="noopener">부산광역시, 「아미동 비석마을 피란민 주거지」, 부산시의 첫 번째 등록문화재로 등록! (보도자료, 2022. 1. 5.)</a></li><li><a href="http://www.busan.go.kr/news/totalnews01/view?dataNo=63275&amp;curPage=36" target="_blank" rel="noopener">부산광역시 부산시보, 「아미동 대성사와 비석 전설」</a></li><li><a href="https://www.busan.go.kr/news/storyreport/view?dataNo=48213" target="_blank" rel="noopener">부산시보, 대성사 (「부산 농악 태동지 아미산 대성사」)</a></li></ul></div></details><details class="sd" style="--i:2"><summary>챕터 2 · 부산항, 하역노동, 40계단, 국제시장, 국밥, 국제시장 대화재<i aria-hidden="true"></i></summary><div class="sb"><ul><li>부산근현대역사관, 전시 자료</li><li><a href="https://www.visitbusan.net/index.do?menuCd=DOM_000000201001001000&amp;uc_seq=2187&amp;lang_cd=ko" target="_blank" rel="noopener">비짓부산, 과거의 흔적과 미래를 잇는 교차점, '부산항 제1부두'</a></li><li><a href="https://www.busan.go.kr/wartime_capital_eng/busanheritage05" target="_blank" rel="noopener">피란수도 부산 유산 사이트 (부산항 제1부두)</a></li><li><a href="https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000201001001000&amp;uc_seq=364&amp;lang_cd=ko" target="_blank" rel="noopener">비짓부산, 지나간 시절을 되짚어 오르는 40계단</a></li><li><a href="https://ko.wikipedia.org/wiki/%EA%B5%AD%EC%A0%9C%EC%8B%9C%EC%9E%A5" target="_blank" rel="noopener">위키백과, 국제시장 / 깡통시장</a></li><li><a href="https://busan.grandculture.net/Contents/Contents?dataType=01&amp;contents_id=GC04200975" target="_blank" rel="noopener">부산역사문화대전, 국제시장 대화재</a></li><li><a href="https://www.yna.co.kr/view/AKR20230816059800051" target="_blank" rel="noopener">연합뉴스, 차근호, [정전 70년, 피란수도 부산] (22) 피란민 고픈 배 채운 돼지국밥, 2023. 8. 26.</a></li></ul></div></details><details class="sd" style="--i:3"><summary>챕터 3 · 피란학교, 보수동 책방골목, 광복동 다방<i aria-hidden="true"></i></summary><div class="sb"><ul><li><a href="https://www.busan.go.kr/monument/index" target="_blank" rel="noopener">부산광역시 임시수도기념관, 「피란학교 천막교실」</a></li><li>대한민국역사박물관 현대사아카이브, 보수동 책방골목(이미지)</li><li><a href="https://www.busan.go.kr/mmch/webzine/1636905" target="_blank" rel="noopener">부산광역시 부산근현대역사관 웹진, 「요즘 어느 다방 나가시오?」</a></li><li><a href="https://www.donga.com/news/article/all/20121224/51800109/1" target="_blank" rel="noopener">동아일보, 권영민, [권영민의 그때 그곳]&lt;4&gt; 6·25 당시 예술인들의 아지트, 부산 광복동의 다방 '밀다원', 2012. 12. 24.</a></li><li><a href="https://v.daum.net/v/20230610090018049" target="_blank" rel="noopener">연합뉴스, 차근호, [정전 70년, 피란수도 부산] ⑪ 김동리의 '밀다원 시대', 2023. 6. 10.</a></li><li>부산광역시, 『부산 발전 50년 역사 이야기(상)』, 생각쉼표·휴먼컬처아리랑, 2015</li><li>부산광역시 교과서, 『부산의 재발견』</li><li>임시수도기념관, 『한국전쟁과 임시수도 부산』, 2019</li></ul></div></details><details class="sd" style="--i:4"><summary>챕터 4 · 우암동 소막마을, 밀면, 동항성당<i aria-hidden="true"></i></summary><div class="sb"><ul><li>공윤경, 「소막마을의 변화와 주민들의 장소 인식」, 『한국민족문화』 제63호, 부산대학교 한국민족문화연구소, 2017</li><li><a href="https://www.visitbusan.net/index.do?menuCd=DOM_000000201001001000&amp;uc_seq=838&amp;lang_cd=ko" target="_blank" rel="noopener">비짓부산, 우암동 소막마을</a></li><li><a href="https://www.yna.co.kr/view/AKR20230728064600051" target="_blank" rel="noopener">연합뉴스, 차근호, [정전 70년, 피란수도 부산] (21) 구호물자 밀가루로 만든 밀면, 2023. 8. 19.</a></li><li><a href="https://www.busan.go.kr/futureheritage/meetfuture01/1685601" target="_blank" rel="noopener">부산미래유산, 동항성당</a></li><li><a href="https://donghang.catb.kr/templates/main/?p_srl=15001" target="_blank" rel="noopener">동항성당 웹사이트</a></li></ul></div></details>
+      </div></div>
+      <div class="csec" data-s="tool" hidden><div class="tools">
+        
+        <div class="tr"><span class="tk">게임 제작 및 홈페이지 코딩</span><span class="tv"><span class="aiw"><img class="ai" src="img/ai-claude.png" alt="" width="16" height="16">Claude Sonnet 5, Claude Sonnet 5.5</span></span></div><div class="tr"><span class="tk">이미지 생산</span><span class="tv"><span class="aiw"><img class="ai" src="img/ai-gpt.png" alt="" width="16" height="16">GPT-5.5 Instant ~ GPT-6</span></span></div><div class="tr"><span class="tk">스토리 아이디어 구상 및 자료 조사</span><span class="tv"><span class="aiw"><img class="ai" src="img/ai-gpt.png" alt="" width="16" height="16">GPT-5.5 Instant ~ GPT-6</span><span class="aiw"><img class="ai" src="img/ai-claude.png" alt="" width="16" height="16">Claude Sonnet 5, Claude Sonnet 5.5</span></span></div>
+      </div></div>
     </div>
   </section>
 
@@ -1187,8 +1483,8 @@ function playCine(id,done){
   next();
 }
 (function(){
-  var ids=['home', 'cards', 'earth', 'unesco', 'prologue', 'ch1', 'ch2', 'ch3', 'ch4', 'ending', 'how', 'credits'];
-  var story=['prologue', 'ch1', 'ch2', 'ch3', 'ch4', 'ending'];
+  var ids=['home', 'cards', 'earth', 'unesco', 'prologue', 'ch1', 'ch2', 'ch3', 'ch4', 'ending', 'characters', 'how', 'credits'];
+  var story=['prologue', 'ch1', 'ch2', 'ch3', 'ch4', 'ending', 'characters'];
   var links=document.querySelectorAll('[data-go]');
   var groups={story:story,before:['cards','earth','unesco']};
   var storyli=document.getElementById('storyli');
@@ -1413,6 +1709,48 @@ function playCine(id,done){
     po.addEventListener('mouseleave',function(){po.style.transform='';po.style.setProperty('--gl',0);});
   }
 })();
+</script>
+
+<script>
+(function(){
+  var M={'HOME':'홈','BEFORE PLAY':'플레이 전','CARD NEWS':'카드뉴스','GOOGLE EARTH':'구글 어스','UNESCO':'유네스코','STORY':'스토리','PROLOGUE':'프롤로그','CH 1':'챕터 1','CH 2':'챕터 2','CH 3':'챕터 3','CH 4':'챕터 4','ENDING':'엔딩','CHARACTERS':'등장인물','HOW TO PLAY':'게임 방법','CREDITS':'제작 정보','SOURCES':'출처','TOOLS':'제작 도구','PLAY GAME ↗':'게임 시작 ↗'};
+  var H=document.documentElement,b=document.getElementById('lang');if(!b)return;
+  /* 상단바: 두 언어를 같은 자리에 겹쳐 두고 넓은 쪽 너비를 유지 -> 글자가 바뀌어도 메뉴가 움직이지 않음 */
+  function dual(e,en,ko){e.innerHTML='<span class="lg"><span data-l="en">'+en+'</span><span data-l="ko">'+ko+'</span></span>';}
+  [].slice.call(document.querySelectorAll('.tabs a,.ctas .cta')).forEach(function(e){var t=e.textContent.trim();if(M[t])dual(e,t,M[t]);});
+  dual(b.querySelector('span'),'KOR','ENG');
+  /* 본문 제목 */
+  var items=[];
+  [].slice.call(document.querySelectorAll('.label,h2')).forEach(function(e){var t=e.textContent.trim();if(M[t]){e.setAttribute('data-en',t);items.push(e);}});
+  function apply(ko){
+    H.classList.toggle('ko',ko);H.lang=ko?'ko':'en';
+    items.forEach(function(e){e.textContent=ko?(e.getAttribute('data-ko')||M[e.getAttribute('data-en')]):e.getAttribute('data-en');});
+  }
+  b.addEventListener('click',function(){apply(!H.classList.contains('ko'));});
+})();
+</script>
+<script>
+(function(){var l=document.querySelector('.tag .l2');if(!l)return;var tg=l.querySelector('.tg'),i=0,out=[];
+  [].slice.call(l.childNodes).forEach(function(n){if(n===tg)return;if(n.nodeType===3){n.textContent.split('').forEach(function(c){if(c===' '){out.push(document.createTextNode(' '));}else{var s=document.createElement('span');s.className='ch'+(i<6?' em':'');s.style.setProperty('--i',i++);s.textContent=c;out.push(s);}});l.removeChild(n);}});
+  out.forEach(function(n){l.insertBefore(n,tg);});})();
+</script>
+<script>
+(function(){var t=[].slice.call(document.querySelectorAll('.ct'));if(!t.length)return;
+  t.forEach(function(b){b.addEventListener('click',function(){
+    var k=b.getAttribute('data-sec');
+    t.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on);});b.parentNode.style.setProperty('--k',b.getAttribute('data-k'));
+    [].forEach.call(document.querySelectorAll('.csec'),function(c){c.hidden=c.getAttribute('data-s')!==k;});
+    var w=document.querySelector('.wide:has(.ctabs)');if(w)w.scrollTop=0;
+  });});})();
+</script>
+<script>
+(function(){var w=document.getElementById('rvw');if(!w)return;var p=[].slice.call(w.querySelectorAll('.rv')),n=document.getElementById('rvi'),i=0;
+  function go(d){p[i].classList.remove('on');i=(i+d+p.length)%p.length;p[i].classList.add('on');n.textContent=i+1;}
+  var t,hov=false;
+  function tick(){clearInterval(t);t=setInterval(function(){if(hov||!w.offsetParent||document.hidden)return;go(1);},10000);}
+  [].forEach.call(w.querySelectorAll('.rvb'),function(b){b.addEventListener('click',function(){go(+b.getAttribute('data-d'));tick();});});
+  w.addEventListener('mouseenter',function(){hov=true;});w.addEventListener('mouseleave',function(){hov=false;tick();});
+  tick();})();
 </script>
 </body>
 </html>
