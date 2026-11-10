@@ -689,9 +689,8 @@
   html.calm #pcv{display:none}
   @media(max-width:859px){
     .fxb{top:10px;right:12px;font-size:10px;padding:6px 11px}
-    .hero .acts{grid-template-columns:1fr 1fr;width:min(100%,300px);gap:8px}
+    .hero .acts{grid-template-columns:auto 1fr 1fr;width:min(100%,340px);gap:8px}
     .hero .acts .btn.solid{grid-column:1/-1;justify-self:stretch;text-align:center;justify-content:center}
-    .hero .acts .qrb{display:none}
     .hero .acts .dlw{display:flex}
     .hero .acts .dlw .btn{flex:1;text-align:center;justify-content:center}
     .hero .acts .btn.ghost{padding:8px 6px;justify-content:center}
@@ -716,7 +715,6 @@
   @media(max-width:859px){.ugrid{display:block}.unescop .wide{padding:20px 20px 40px!important}.uright{margin-top:26px}.utl b{width:62px}}
   .tabs a[data-group=story]{font-weight:700}
   /* 홈(데스크탑): 가운데 정렬, 글자는 화면을 덮지 않게 */
-  @media(max-width:859px){.hero .acts .qrb{display:none}}
   .ttl{display:inline-block;border-top:1px solid rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.6);padding:clamp(14px,2.4dvh,24px) clamp(22px,3vw,44px);margin-bottom:clamp(14px,2.4dvh,22px)}
   .ttl h1{margin-bottom:0!important}
   .mb{display:inline}
@@ -1003,6 +1001,19 @@
   .dlm .back:hover{background:rgba(120,124,130,.12);color:var(--ink)}
   /* 홈 애니메이션 건너뛰기: 클릭하면 최종 모습으로 바로 */
   html.hskip .home .ttl::before,html.hskip .home .ttl::after,html.hskip .home .ttl h1,html.hskip .home .tag .l1,html.hskip .home .tag .ch,html.hskip .home .tag .tg i,html.hskip .home .hin > .acts > *,html.hskip .home .dlw small{animation-delay:-30s!important}
+  /* 스토리 하위 메뉴: 좁은 화면에서 잘리지 않고 옆으로 밀어서 볼 수 있게 */
+  .bar #storyli .sub{overflow-x:auto;overflow-y:hidden;justify-content:safe center;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .bar #storyli .sub::-webkit-scrollbar{display:none}
+  .bar #storyli .sub a{flex:none}
+  @media(max-width:520px){.bar #storyli .sub{padding:8px 6px;gap:0}.bar #storyli .sub a{padding:8px 5px;font-size:10.5px;letter-spacing:.01em}}
+  @media(max-width:859px){
+    .hero .acts{grid-template-columns:repeat(3,minmax(0,1fr))!important;justify-content:stretch!important}
+    .hero .acts .dlw{display:flex!important;min-width:0}
+    .hero .acts .dlw .btn,.hero .acts .qrb,.hero .acts > .btn.ghost{width:100%;min-width:0!important;min-height:46px;padding:8px 4px!important;display:flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap}
+  }
+  .hero .acts .dlw{position:relative}
+  .hero .acts .dlw small{left:50%!important;right:auto!important;transform:translateX(-50%)!important;text-align:center;white-space:nowrap}
+  html,body{overscroll-behavior-x:none}
 </style>
 </head>
 <body class="loading">
@@ -1039,7 +1050,7 @@
         <div class="acts">
           <a class="btn solid" href="https://jjh0104kr.github.io/busan2026/" target="_blank" rel="noopener">게임 시작 ↗</a>
           <button type="button" class="btn ghost qrb" data-qr>QR</button>
-          <span class="dlw"><button type="button" class="btn ghost" data-dlopen>학습 자료 다운</button><small>학생·교사용 활동지, 가이드북 포함</small></span>
+          <span class="dlw"><button type="button" class="btn ghost" data-dlopen>학습 자료 다운</button><small>활동지, 가이드북 포함</small></span>
           <a class="btn ghost" href="https://forms.gle/GHzv9nTCaqPWgsQt8" target="_blank" rel="noopener">만족도 조사</a>
         </div>
       </div>
@@ -1809,6 +1820,40 @@ function playCine(id,done){
   });
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close();});
   if(hp)new MutationObserver(function(){if(hp.hidden)H.classList.remove('hskip');}).observe(hp,{attributes:true,attributeFilter:['hidden']});
+})();
+</script>
+<script>
+// 스토리 하위 메뉴: 현재 위치가 보이도록 가운데로
+(function(){
+  function fit(){var s=document.querySelector('#storyli .sub'),a=s&&s.querySelector('a.on');if(!a||s.scrollWidth<=s.clientWidth)return;s.scrollLeft=a.offsetLeft-(s.clientWidth-a.offsetWidth)/2;}
+  document.addEventListener('click',function(){setTimeout(fit,60);setTimeout(fit,400);});
+  window.addEventListener('hashchange',function(){setTimeout(fit,60);});
+})();
+</script>
+<script>
+// 모바일: 홈~크레딧 모든 페이지를 좌우로 밀어서 순서대로 이동
+(function(){
+  var ORDER=['home','cards','earth','unesco','prologue','ch1','ch2','ch3','ch4','ending','characters','how','credits'];
+  var sx,sy,st,ok=false;
+  function hscroll(el){while(el&&el!==document.body){if(el.scrollWidth>el.clientWidth+4){var o=getComputedStyle(el).overflowX;if(o==='auto'||o==='scroll')return true;}el=el.parentElement;}return false;}
+  function cur(){var p=document.querySelector('.panel:not([hidden])');return p?p.id.replace('p-',''):null;}
+  document.addEventListener('touchstart',function(e){
+    ok=false;if(e.touches.length!==1)return;
+    if(typeof cineOn!=='undefined'&&cineOn)return;
+    if(document.body.classList.contains('loading'))return;
+    var t=e.target;
+    if(t.closest&&t.closest('.qrm,.qrfull,.dlm,.cardm,.bar,.snav,.car,.track,.rvw'))return;
+    if(hscroll(t))return;
+    sx=e.touches[0].clientX;sy=e.touches[0].clientY;st=Date.now();ok=true;
+  },{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(!ok)return;ok=false;
+    var c=e.changedTouches[0],dx=c.clientX-sx,dy=c.clientY-sy;
+    if(Date.now()-st>700||Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx)*.6)return;
+    var i=ORDER.indexOf(cur());if(i<0)return;
+    var n=ORDER[i+(dx<0?1:-1)];if(!n)return;
+    var a=document.createElement('a');a.setAttribute('data-go',n);a.href='#'+n;a.hidden=true;document.body.appendChild(a);a.click();document.body.removeChild(a);
+  },{passive:true});
 })();
 </script>
 </body>
