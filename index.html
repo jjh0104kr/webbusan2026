@@ -9,7 +9,7 @@
 <meta property="og:title" content="피란의 기억을 잇다">
 <meta property="og:description" content="피란수도 부산의 역사 현장을 함께 걸으며 잃어버린 기억을 되찾는 스토리 게임 | 광안중학교 역사심화탐구동아리 [굳세어라 광안아]">
 <meta property="og:url" content="https://jjh0104kr.github.io/">
-<meta property="og:image" content="https://jjh0104kr.github.io/img/og.jpg">
+<meta property="og:image" content="https://jjh0104kr.github.io/img/og.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -422,7 +422,14 @@
   /* 선택 방지 */
   body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
   img,a{-webkit-user-drag:none}
-  .qrm .qurl{display:block;margin:0 0 10px;font-size:14px;color:var(--ink);-webkit-user-select:text;user-select:text;cursor:text;white-space:nowrap}
+  .qrm .qurl{display:block;margin:0 0 10px;font-size:14px;color:var(--ink);cursor:pointer;white-space:nowrap;text-decoration:underline;text-decoration-color:rgba(60,64,70,.3);text-underline-offset:3px;transition:color .2s}
+  .qrm .qurl:hover{color:var(--accent)}
+  .qrm .qurl{display:grid;justify-items:center}
+  .qrm .qurl > span{grid-area:1/1;font-size:inherit;white-space:nowrap}
+  .qrm .qurl .ub{visibility:hidden}
+  .qrm .qurl.ok{color:var(--sage);text-decoration:none}
+  .qrm .qurl.ok .ua{visibility:hidden}
+  .qrm .qurl.ok .ub{visibility:visible}
   /* 카드뉴스 좌우 버튼 */
   .tw{position:relative;width:fit-content;max-width:100%}
   .cb{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,253,248,.95);color:var(--accent);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:background .25s,color .25s,opacity .25s,transform .25s var(--ease)}
@@ -970,6 +977,11 @@
   .chead{text-align:left}
   .chead .hl2{font-size:1em;color:var(--accent);background:linear-gradient(transparent 62%,rgba(233,165,75,.38) 0);-webkit-background-clip:border-box;background-clip:border-box;-webkit-text-fill-color:currentColor;animation:none;text-decoration:none}
   .bar .brand small{align-self:auto;margin-top:2px;padding:0;background:none;color:var(--sub);border-radius:0;font-size:9.5px;font-weight:400;letter-spacing:.06em;line-height:1.3}
+  /* 사람들이 눌러 보도록 플레이 전 메뉴 강조 */
+  .tabs a,.tabs a[data-group=before]{font-weight:700}
+  .bar .has-sub .sub a{font-weight:700;color:var(--ink)}
+  .bar .has-sub .sub a:hover{color:var(--accent)}
+  .bar .has-sub .sub a.on{color:var(--accent)}
 </style>
 </head>
 <body class="loading">
@@ -1323,15 +1335,15 @@
         <article class="chc" style="--i:2">
           <div class="cpic"><img src="img/char-young-grandpa.webp" alt="어린 할아버지"/></div>
           <div class="ctx">
-            <span class="ctag">6·25 전쟁 당시 · 15세</span>
+            <span class="ctag">1950년대 당시 · 15세</span>
             <h3>어린 할아버지<span class="cn2">백금동</span></h3>
-            <p>6·25 전쟁 때 부모님과 아미동 비석마을로 피란 온 15살 소년이다. 주말마다 부산항에서 아버지의 하역 일을 돕고, 모은 돈으로 어머니께 비녀를 사 드릴 만큼 가족을 아끼는 마음이 깊다. 보수동에서 같은 책을 잡은 소녀(이금순)에게 책을 양보하고, 어려운 친구 상철이를 집으로 데려오는 따뜻하고 의리 있는 성격이다. 보수동에서 첫사랑인 이금순을 만나고, 이금순과 사랑에 빠진다.</p>
+            <p>1950년대에 부모님과 아미동 비석마을로 피란 온 15살 소년이다. 주말마다 부산항에서 아버지의 하역 일을 돕고, 모은 돈으로 어머니께 비녀를 사 드릴 만큼 가족을 아끼는 마음이 깊다. 보수동에서 같은 책을 잡은 소녀(이금순)에게 책을 양보하고, 어려운 친구 상철이를 집으로 데려오는 따뜻하고 의리 있는 성격이다. 보수동에서 첫사랑인 이금순을 만나고, 이금순과 사랑에 빠진다.</p>
           </div>
         </article>
         <article class="chc" style="--i:3">
           <div class="cpic"><img src="img/char-young-grandma.webp" alt="어린 할머니"/></div>
           <div class="ctx">
-            <span class="ctag">6·25 전쟁 당시 · 15세</span>
+            <span class="ctag">1950년대 당시 · 15세</span>
             <h3>어린 할머니<span class="cn2">이금순</span></h3>
             <p>할아버지와 같은 15살로, 보수동 책방골목에서 처음 만난 소녀이다. 피란 와서 부산 가족이 내어 준 사랑방에서 지내다가, 더는 부담을 주기 싫어 스스로 나와 우암동 피란민 수용소로 거처를 옮겼다. 책을 좋아하고 당찬 성격이다. 우암동으로 떠난 뒤에도 어린 할아버지와의 약속을 믿고 기다리고, 오랫동안 백금동과 지내며 연애하다가 결혼하며 백금동의 아내가 된다.</p>
           </div>
@@ -1368,7 +1380,7 @@
   </section>
 
 </main>
-<div class="qrm" id="qrm" hidden><div class="qc" role="dialog" aria-label="QR 코드"><button type="button" class="x" data-qrclose aria-label="닫기">×</button><b>피란의 기억을 잇다</b><img src="img/qr.png" alt="게임 QR 코드" width="240" height="240"><span class="qurl">https://jjh0104kr.github.io/busan2026/</span><span>스마트폰 카메라로 스캔해 주세요</span><button type="button" class="btn qzoom" data-qrzoom>QR 확대하기</button></div></div>
+<div class="qrm" id="qrm" hidden><div class="qc" role="dialog" aria-label="QR 코드"><button type="button" class="x" data-qrclose aria-label="닫기">×</button><b>피란의 기억을 잇다</b><img src="img/qr.png" alt="게임 QR 코드" width="240" height="240"><span class="qurl" role="button" tabindex="0" title="클릭하면 주소가 복사돼요"><span class="ua">https://jjh0104kr.github.io/busan2026/</span><span class="ub">주소가 복사되었어요</span></span><span>스마트폰 카메라로 스캔해 주세요</span><button type="button" class="btn qzoom" data-qrzoom>QR 확대하기</button></div></div>
 <div class="qrfull" id="qrfull" hidden><button type="button" class="x" data-qrfullclose aria-label="닫기">×</button><img src="img/qr.png" alt="게임 QR 코드 (확대)"></div>
 <div class="cardm" id="cardm" hidden><div class="cc" role="dialog" aria-label="답사지 카드뉴스"><button type="button" class="x" data-cardclose aria-label="닫기">×</button><img id="cardmimg" alt="" width="640" height="640"><span id="cardmcap"></span></div></div>
 <div class="cine" id="cine" hidden><button type="button" class="skip" id="cskip">SKIP ›</button><div class="cdust" id="cdust"></div><div class="cstage" id="cstage"></div><i class="cbar" id="cbar"></i></div>
@@ -1415,6 +1427,14 @@
     if(e.target.closest('[data-qr]')){m.hidden=false;return;}
     if(!m.hidden&&(e.target===m||e.target.closest('[data-qrclose]')))close();
   });
+  var u=m.querySelector('.qurl'),ut=u.querySelector('.ua').textContent,tm;
+  function copy(){
+    var done=function(){u.classList.add('ok');clearTimeout(tm);tm=setTimeout(function(){u.classList.remove('ok');},1600);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ut).then(done,function(){fb();});}else fb();
+    function fb(){var t=document.createElement('textarea');t.value=ut;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(x){}document.body.removeChild(t);done();}
+  }
+  u.addEventListener('click',function(e){e.stopPropagation();copy();});
+  u.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();copy();}});
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape')return;
     if(!f.hidden)f.hidden=true;else if(!m.hidden)close();
