@@ -1044,6 +1044,13 @@
   #gsm .dc{width:min(500px,100%)}
   #gsm .dc p .nw{white-space:nowrap}
   @media(max-width:520px){#gsm .dc p{font-size:clamp(11.5px,3.45vw,14.5px)}}
+  .cardm .cw,.slide{position:relative;container-type:inline-size}
+  .cardm .cw{width:min(86dvh,90vw)}
+  .cardm .cw img{display:block;width:100%}
+  .cardm #cardmloc,.slide .sloc{position:absolute;left:0;right:0;top:0;height:7.1%;display:flex;align-items:center;justify-content:center;padding:0 3%;color:#2f4a5e;font-size:11px;font-weight:700;letter-spacing:0;white-space:nowrap;pointer-events:none}
+  @supports (width:1cqw){.cardm #cardmloc,.slide .sloc{font-size:clamp(11px,2.6cqw,17px)}}
+  .cardm #cardmloc b,.slide .sloc b{font-weight:800;margin-right:.4em;color:#a3382a}
+  .cardm #cardmloc[hidden]{display:none}
 </style>
 </head>
 <body class="loading">
@@ -1309,7 +1316,7 @@
           <h2>소막에 남은 그날</h2>
           <div class="txt">
             <p><span class="hl">기억이 소녀와의 이별에서 멈춘 할아버지는 그 뒤의 기억을 찾기 위해 손자와 <span class="pl" data-card="3" role="button" tabindex="0">우암동 소막마을</span>을 찾는다.</span> 해설사에게 이곳이 일제강점기에 소를 검역하던 곳이었다가 피란민의 거처가 되었다는 이야기를 듣는다. 소막마을 주택 박물관에서는 안내원 박순자가 할아버지를 알아보고 우암동에 왔던 날을 들려주며 옛 소막마을의 회상으로 이어진다.</p>
-<p>어린 할아버지는 우연히 우암동에서 만난 어린 박순자의 부탁으로 구호물품을 가져다준 뒤 할머니 이금순과 재회한다. <span class="hl">늦게 우암동에 온 까닭은 부산역 대화재로 집을 잃은 친구 상철이를 챙기느라였음을 이야기한다.</span></p>
+<p>어린 할아버지는 우연히 우암동에서 만난 어린 박순자의 부탁으로 구호물품을 가져다준 뒤 할머니 이금순과 재회한다. <span class="hl">늦게 우암동에 온 까닭은 <span class="pl" data-card="5" role="button" tabindex="0">부산역 대화재</span>로 집을 잃은 친구 상철이를 챙기느라였음을 이야기한다.</span></p>
 <p><span class="hl">할머니 또한 우암동에 갑자기 오게 된 이유가 부산 가족들이 금순처럼 피란민 가족들을 많이 도와줬지만 더는 부담이 되기 싫어 스스로 나와 우암동(적기) 피란민 수용소에 왔다고 말한다.</span> 밤이 늦어 둘이 헤어져야 할 때, 할머니는 할아버지에게 여태껏 기다리면서 쓴 편지를 전달해줬고, 이에 <span class="hl">할아버지는 할머니에게 영원히 함께할 것을 약속한다.</span></p>
           <p class="plnote">표시된 장소를 누르면 답사지 카드 뉴스를 볼 수 있어요.</p></div>
         </div>
@@ -1445,7 +1452,7 @@
 <div class="dlm" id="dlm" hidden><div class="dc" role="dialog" aria-modal="true" aria-label="학습 자료 다운로드 안내"><b>학습 자료 다운로드</b><p><span><b class="kv">활동지(학생용, 교사용)</b>와 <b class="kv">가이드북(교사용)</b>이 포함되어 있습니다.</span><span>다운로드 버튼을 누르면, 한글 파일이 <b class="kv">zip 파일 하나</b>로 다운됩니다.</span><span>수업을 진행하시려는 <b class="kv">선생님/보호자께서는</b> 적극적으로 활용해주시면 감사하겠습니다.</span></p><div class="da"><a class="go" href="files/learning-material.zip" download="피란의 기억을 잇다 학습 자료 및 교사용 가이드북.zip" data-dlgo>다운로드</a><button type="button" class="back" data-dlclose>돌아가기</button></div></div></div>
 <div class="qrm" id="qrm" hidden><div class="qc" role="dialog" aria-label="QR 코드"><button type="button" class="x" data-qrclose aria-label="닫기">×</button><b>피란의 기억을 잇다</b><img src="img/qr.png" alt="게임 QR 코드" width="240" height="240"><span class="qurl" role="button" tabindex="0" title="클릭하면 주소가 복사돼요"><span class="ua">https://jjh0104kr.github.io/busan2026/</span><span class="ub">주소가 복사되었어요</span></span><span>스마트폰 카메라로 스캔해 주세요</span><button type="button" class="btn qzoom" data-qrzoom>QR 확대하기</button></div></div>
 <div class="qrfull" id="qrfull" hidden><button type="button" class="x" data-qrfullclose aria-label="닫기">×</button><img src="img/qr.png" alt="게임 QR 코드 (확대)"></div>
-<div class="cardm" id="cardm" hidden><div class="cc" role="dialog" aria-label="답사지 카드 뉴스"><button type="button" class="x" data-cardclose aria-label="닫기">×</button><img id="cardmimg" alt="" width="640" height="640"><span id="cardmcap"></span></div></div>
+<div class="cardm" id="cardm" hidden><div class="cc" role="dialog" aria-label="답사지 카드 뉴스"><button type="button" class="x" data-cardclose aria-label="닫기">×</button><div class="cw"><span id="cardmloc" hidden></span><img id="cardmimg" alt="" width="640" height="640"></div><span id="cardmcap"></span></div></div>
 <div class="cine" id="cine" hidden><button type="button" class="skip" id="cskip">SKIP ›</button><div class="cdust" id="cdust"></div><div class="cstage" id="cstage"></div><i class="cbar" id="cbar"></i></div>
 <footer class="foot">© 2026 광안중학교 역사심화탐구동아리 [굳세어라 광안아]</footer>
 
@@ -1463,7 +1470,12 @@
 (function(){
   var m=document.getElementById('cardm'),im=document.getElementById('cardmimg'),cp=document.getElementById('cardmcap');
   var slides=document.querySelectorAll('#track .slide img');
-  function open(n){var el=slides[n-1];if(!el)return;im.src=el.getAttribute('src');im.alt=el.alt;cp.textContent=el.alt;m.hidden=false;}
+  var LOC={3:'부산 남구 우암번영로 9 (우암동)',4:'부산 중구 중앙동4가 (부산항 제1부두)',5:'부산 중구 중앙동 (현 무역회관 자리 부근)',6:'부산 중구 40계단길 일대 (중앙동4가)',7:'부산 중구 대청로 112 (대청동1가)',8:'부산 중구 중구로 일대 (신창동4가)',9:'부산 중구 대청로 67-1 (보수동1가)',10:'부산 서구 구덕로 225 (부민동2가)',11:'부산 서구 임시수도기념로 45 (부민동3가)',12:'부산 서구 아미로 49 (아미동2가)',13:'부산 사하구 감내2로 203'};
+  var lc=document.getElementById('cardmloc');
+  [].forEach.call(document.querySelectorAll('#track .slide'),function(s,i){var t=LOC[i+1];if(!t)return;var e=document.createElement('span');e.className='sloc';e.innerHTML='<b>[위치]</b> '+t;s.appendChild(e);});
+  function open(n){var el=slides[n-1];if(!el)return;im.src=el.getAttribute('src');im.alt=el.alt;cp.textContent=el.alt;
+    if(LOC[n]){lc.innerHTML='<b>[위치]</b> '+LOC[n];lc.hidden=false;}else{lc.hidden=true;lc.textContent='';}
+    m.hidden=false;}
   function close(){m.hidden=true;}
   document.addEventListener('click',function(e){
     var si=e.target.closest('#track .slide img');
