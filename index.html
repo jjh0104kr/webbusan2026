@@ -94,7 +94,7 @@
   .sub a{display:block;text-align:center;text-decoration:none;color:var(--sub);font-size:12.5px;letter-spacing:.1em;padding:8px 14px;border-radius:6px;transition:background .2s,color .2s}
   .sub a:hover{background:#f3efe4;color:var(--ink)}
   .sub a.on{color:var(--accent);font-weight:500}
-  .has-sub:not(.shut):hover .sub,.has-sub.open .sub{display:block;animation:drop .3s var(--ease) both}
+  html:not(.touch) .has-sub:not(.shut):hover .sub,.has-sub.open .sub{display:block;animation:drop .3s var(--ease) both}
 
   main{flex:1;min-height:0;position:relative}
   .panel{height:100%}
@@ -111,7 +111,7 @@
   .htxt p{color:var(--sub);font-size:16px;margin-bottom:26px}
   .acts{display:flex;gap:10px;flex-wrap:wrap}
 
-  /* 이야기 / 카드뉴스 */
+  /* 이야기 / 카드 뉴스 */
   .layout{height:100%;display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:56px;align-items:stretch}
   .side{min-height:0;overflow-y:auto;scrollbar-width:none}
   .side::-webkit-scrollbar{display:none}
@@ -341,7 +341,7 @@
   .bar .tabs > li.has-sub{position:static}
   .bar .sub{border-top:0}
   .bar .sub{left:0;right:0;top:100%;min-width:0;border-radius:0;border-width:0 0 1px 0;padding:10px 12px;display:none;justify-content:center;gap:clamp(4px,1.6vw,18px);box-shadow:0 10px 20px rgba(0,0,0,.08)}
-  .bar .has-sub:not(.shut):hover .sub,.bar .has-sub.open .sub{display:flex;animation:dropx .3s var(--ease) both}
+  html:not(.touch) .bar .has-sub:not(.shut):hover .sub,.bar .has-sub.open .sub{display:flex;animation:dropx .3s var(--ease) both}
   .bar .sub a{padding:8px clamp(8px,1.8vw,20px);white-space:nowrap}
   /* 좁거나 세로로 긴 창에서도 안 깨지게 */
   .cardlay{grid-template-columns:auto minmax(300px,1fr);gap:clamp(24px,4vw,56px)}
@@ -430,7 +430,7 @@
   .qrm .qurl.ok{color:var(--sage);text-decoration:none}
   .qrm .qurl.ok .ua{visibility:hidden}
   .qrm .qurl.ok .ub{visibility:visible}
-  /* 카드뉴스 좌우 버튼 */
+  /* 카드 뉴스 좌우 버튼 */
   .tw{position:relative;width:fit-content;max-width:100%}
   .cb{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,253,248,.95);color:var(--accent);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:background .25s,color .25s,opacity .25s,transform .25s var(--ease)}
   .cb.l{left:-22px}.cb.r{right:-22px}
@@ -630,7 +630,7 @@
     .hero .acts .dlw .btn{flex:1}
     .hero .acts .dlw small{font-size:9px}
   }
-  /* 카드뉴스/구글 어스: 제목 → 설명 → 카드(지도) → 목록 순서 */
+  /* 카드 뉴스/구글 어스: 제목 → 설명 → 카드(지도) → 목록 순서 */
   .cardp:not([hidden]) .main > .label{animation:fade .7s ease .1s both!important}
   .cardp:not([hidden]) .main > h2{animation:fade .7s ease .25s both!important}
   .cardp:not([hidden]) .main > .d{animation:fade .7s ease .4s both!important}
@@ -644,7 +644,7 @@
     .cardlay .side{order:4;margin-bottom:18px}
     .cardlay .main > .idx{order:5;max-height:320px}
   }
-  /* 모바일: 홈 크기 축소 / QR 버튼 / 카드뉴스 첫 화면 */
+  /* 모바일: 홈 크기 축소 / QR 버튼 / 카드 뉴스 첫 화면 */
   @media(max-width:859px){
     .hero h1{font-size:clamp(32px,10.5vw,50px);line-height:1.2;margin-bottom:14px}
     .hero .tag{font-size:clamp(11px,3.4vw,15px);line-height:1.55;margin-bottom:22px}
@@ -1014,6 +1014,36 @@
   .hero .acts .dlw{position:relative}
   .hero .acts .dlw small{left:50%!important;right:auto!important;transform:translateX(-50%)!important;text-align:center;white-space:nowrap}
   html,body{overscroll-behavior-x:none}
+  .dlm .da + .da{margin-top:10px}
+  .dlm .da.one{max-width:360px}
+  .dlm .da .back{text-decoration:none}
+  .dlm .da .back{font-size:13.5px;padding:0 6px;white-space:nowrap}
+  @media(max-width:520px){.dlm .dc{padding:26px 18px 20px}.dlm .da .back{font-size:12.5px}}
+  /* 안내창 정리: 행간·버튼 */
+  .dlm .dc{padding:26px 28px 22px}
+  #gsm .dc{width:min(440px,100%)}
+  .dlm .dc b{margin-bottom:2px}
+  .dlm .dc b::after{margin-top:10px}
+  .dlm .dc p{margin:14px 0 20px;line-height:1.6}
+  .dlm .dc p span + span{margin-top:0}
+  .dlm .da{gap:8px}
+  .dlm .da + .da{margin-top:8px}
+  .dlm .da > *{min-height:44px;border-radius:8px;font-size:14px;font-weight:600}
+  .dlm .back{background:#fff;border:1px solid rgba(47,74,94,.28);color:var(--accent)}
+  .dlm .back:hover{background:rgba(47,74,94,.07);color:var(--accent)}
+  .dlm .go{background:var(--accent);border:1px solid var(--accent);color:#fff}
+  @media(max-width:520px){.dlm .dc{padding:24px 16px 18px}.dlm .da .back{font-size:12.5px}}
+  .dlm .da > *{flex:1 1 0;min-width:0;box-sizing:border-box;height:44px;min-height:44px;padding:0 6px;line-height:1.2;margin:0}
+  .dlm .da > *,.dlm .da .back,.dlm .da .go{font-size:14px;font-weight:600;line-height:1}
+  @media(max-width:520px){.dlm .da > *,.dlm .da .back,.dlm .da .go{font-size:13px}}
+  #gsm .dc p b{display:inline;font-family:inherit;font-size:inherit;margin:0;font-weight:700;color:var(--ink)}
+  #gsm .dc p span{display:block}
+  .dlm .da .back{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+  .dlm .da .back .ic{flex:none}
+  @media(max-width:520px){.dlm .da .back .ic{width:15px;height:15px}.dlm .da .back{gap:4px}}
+  #gsm .dc{width:min(500px,100%)}
+  #gsm .dc p .nw{white-space:nowrap}
+  @media(max-width:520px){#gsm .dc p{font-size:clamp(11.5px,3.45vw,14.5px)}}
 </style>
 </head>
 <body class="loading">
@@ -1033,7 +1063,7 @@
   <li><a href="#how" data-go="how">HOW TO PLAY</a></li>
   <li><a href="#credits" data-go="credits">CREDITS</a></li>
 </ul>
-  <span class="ctas"><button type="button" class="btn qrb lang" id="lang" aria-label="Language"><svg class="gl" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg><span>KOR</span></button><a class="btn solid cta" href="https://jjh0104kr.github.io/busan2026/" target="_blank" rel="noopener">PLAY GAME ↗</a></span>
+  <span class="ctas"><button type="button" class="btn qrb lang" id="lang" aria-label="Language"><svg class="gl" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg><span>KOR</span></button><a class="btn solid cta" href="#start" data-gs>PLAY GAME ↗</a></span>
 </header>
 
 <a class="snav l" id="snL" href="#prologue" data-go="prologue" aria-label="이전 스토리" hidden>←</a>
@@ -1048,7 +1078,7 @@
         <div class="ttl"><h1>피란의<br class="mb"> 기억을 잇다</h1></div>
         <p class="tag"><span class="l1">할아버지와 손주가 잊어버린 기억을 찾아 떠나는</span><br><span class="l2">피란수도 부산에서의 <span class="tg"><i>동</i><i>행</i></span></span></p>
         <div class="acts">
-          <a class="btn solid" href="https://jjh0104kr.github.io/busan2026/" target="_blank" rel="noopener">게임 시작 ↗</a>
+          <a class="btn solid" href="#start" data-gs>게임 시작 ↗</a>
           <button type="button" class="btn ghost qrb" data-qr>QR</button>
           <span class="dlw"><button type="button" class="btn ghost" data-dlopen>학습 자료 다운</button><small>활동지, 가이드북 포함</small></span>
           <a class="btn ghost" href="https://forms.gle/GHzv9nTCaqPWgsQt8" target="_blank" rel="noopener">만족도 조사</a>
@@ -1063,8 +1093,8 @@
         <aside class="side">
           <div class="car">
             <div class="tw"><button type="button" class="cb l" id="cnL" aria-label="이전 카드">←</button><button type="button" class="cb r" id="cnR" aria-label="다음 카드">→</button>
-            <div class="track" id="track" tabindex="0" aria-label="답사지 카드뉴스">
-              <div class="slide"><img alt="카드뉴스 소개" src="img/card01.webp"/></div>
+            <div class="track" id="track" tabindex="0" aria-label="답사지 카드 뉴스">
+              <div class="slide"><img alt="카드 뉴스 소개" src="img/card01.webp"/></div>
               <div class="slide"><img alt="피란수도 부산 한눈에 보기" src="img/card02.webp"/></div>
               <div class="slide"><img alt="우암동 소막마을" src="img/card03.webp"/></div>
               <div class="slide"><img alt="부산항 1부두" src="img/card04.webp"/></div>
@@ -1184,7 +1214,7 @@
           <h2>기억을 잊다</h2>
           <div class="txt">
 <p><span class="hl">치매로 과거의 기억을 잃어가는 할아버지</span>는 손수건과 TV 속 피란수도 부산 이야기를 계기로 어린 시절의 기억을 조금씩 떠올린다. 북에서 피란 와 일본인 공동묘지에 터를 잡고 살았다는 단서를 얻은 손자는 할아버지의 잃어버린 인생과 소중한 사람들의 흔적을 찾기 위해 <span class="hl"><span class="pl" data-card="12" role="button" tabindex="0">아미동 비석마을</span>로 함께 떠나기로 한다.</span></p>
-          <p class="plnote">표시된 장소를 누르면 답사지 카드뉴스를 볼 수 있어요.</p></div>
+          <p class="plnote">표시된 장소를 누르면 답사지 카드 뉴스를 볼 수 있어요.</p></div>
         </div>
       </div>
     </div>
@@ -1208,7 +1238,7 @@
             <p><span class="hl">TV에서 본 단서로 손자와 할아버지는 <span class="pl" data-card="12" role="button" tabindex="0">아미동 비석마을</span>을 찾는다.</span> 우물가에서 만난 100세 할머니는 부산역 대화재로 집을 잃고 이곳에 왔다고 한다. <span class="hl">6·25 전쟁으로 인한 피란 시절에는 물이 부족해 우물에 수백 명이 줄을 섰고 꿀꿀이죽으로 끼니를 이었다는 이야기를 듣자, 할아버지는 피란 시절의 고생을 조금씩 떠올린다.</span></p>
 <p>이어서 마을 주민 최덕삼에게 화장실 옆 깨진 비석이 어린 시절 자신이 귀신에 놀라 달아나다 깨뜨린 것임을 듣고, 대성사에서 비석에 담긴 영혼의 성불을 비는 기도를 올린다. 이후 문화유산 해설사가 비석 조각 5개를 찾아 복원해 달라고 부탁한다.</p>
 <p>복원하는 동안 <span class="hl">할아버지는 묘지 위에 부모님과 함께 집을 짓고 살던 기억을 되찾는다.</span> 그렇게 가족의 모습을 떠올린 <span class="hl">할아버지는 아버지가 바다를 바라보던 모습과 뱃고동 소리가 떠올라, 두 사람은 <span class="pl" data-card="4" role="button" tabindex="0">부산항</span>으로 향한다.</span></p>
-          <p class="plnote">표시된 장소를 누르면 답사지 카드뉴스를 볼 수 있어요.</p></div>
+          <p class="plnote">표시된 장소를 누르면 답사지 카드 뉴스를 볼 수 있어요.</p></div>
         </div>
       </div>
     </div>
@@ -1233,7 +1263,7 @@
 <p>또한 <span class="hl">손자가 바다에서 건진 장갑을 통해 어머니가 아버지의 손이 다칠까봐 사 준 장갑을 기억해낸다.</span> 이에 할아버지의 기억은 <span class="pl" data-card="6" role="button" tabindex="0">40계단</span>으로 향했다. 40계단의 설명을 듣던 손자는 출출해지기 시작했고, 둘은 함께 <span class="pl" data-card="8" role="button" tabindex="0">국제시장</span>에 가서 국밥을 먹는다.</p>
 <p>둘은 <span class="pl" data-card="8" role="button" tabindex="0">국제시장</span> 국밥집 사장에게 국제시장에 대한 이야기를 듣고, 준공기념비의 내용을 알게 되면서 어머니에 대한 기억을 떠올린다. <span class="hl">1953년 국제시장 대화재로 어머니의 가게가 불에 탔다는 사실을 떠올리고, 옆 가게 친구분이 화재에 휘말려 돌아가신 일을 기억해 낸다.</span></p>
 <p><span class="hl">할아버지는 웃음을 잃은 어머니를 위해 <span class="pl" data-card="4" role="button" tabindex="0">부산항</span>에서 번 돈으로 비녀를 사 드렸고, 그 비녀를 함께 골라 준 사람이 훗날의 할머니였다는 기억을 하게 된다.</span></p>
-          <p class="plnote">표시된 장소를 누르면 답사지 카드뉴스를 볼 수 있어요.</p></div>
+          <p class="plnote">표시된 장소를 누르면 답사지 카드 뉴스를 볼 수 있어요.</p></div>
         </div>
       </div>
     </div>
@@ -1257,7 +1287,7 @@
             <p><span class="hl">할머니와의 첫 만남을 이야기하는 할아버지는 15살 때의 기억을 회상한다.</span> 할아버지는 피란 시절 당시 공부를 하려면 천막 학교로 가야했다. 친구 유상철에게 전쟁 중 교실이 부족해 천막과 전차, 야외 등에서도 수업을 이어 간다는 설명을 듣는다.</p>
 <p>어린 할아버지는 필요한 교과서를 얻은 뒤 부족한 외국어 책을 구하러 <span class="pl" data-card="9" role="button" tabindex="0">보수동</span>에 가고, 같은 책을 잡은 소녀(할머니 이금순)에게 책을 양보한다. 다음 날 어린 할아버지는 외국어 책을 다시 구하기 위해 <span class="pl" data-card="9" role="button" tabindex="0">책방골목</span>에 가서, 소녀를 다시 만났고 이후 둘은 서로 가까워진다.</p>
 <p>한 달 뒤 둘은 데이트를 위해 간 광복동 밀다원 다방에서 주인이 내준 우유를 마시며, 다방 안에서 전쟁 중에도 글과 그림을 이어 가는 예술가들을 본다. <span class="hl">그날 소녀는 가족이 우암동(적기) 피란민 수용소로 가게 되었다고 알린다.</span> <span class="hl">어린 할아버지는 꼭 소녀를 만나기 위해 우암동(적기)로 직접 찾아가겠다고 약속하며 헤어진다.</span></p>
-          <p class="plnote">표시된 장소를 누르면 답사지 카드뉴스를 볼 수 있어요.</p></div>
+          <p class="plnote">표시된 장소를 누르면 답사지 카드 뉴스를 볼 수 있어요.</p></div>
         </div>
       </div>
     </div>
@@ -1281,7 +1311,7 @@
             <p><span class="hl">기억이 소녀와의 이별에서 멈춘 할아버지는 그 뒤의 기억을 찾기 위해 손자와 <span class="pl" data-card="3" role="button" tabindex="0">우암동 소막마을</span>을 찾는다.</span> 해설사에게 이곳이 일제강점기에 소를 검역하던 곳이었다가 피란민의 거처가 되었다는 이야기를 듣는다. 소막마을 주택 박물관에서는 안내원 박순자가 할아버지를 알아보고 우암동에 왔던 날을 들려주며 옛 소막마을의 회상으로 이어진다.</p>
 <p>어린 할아버지는 우연히 우암동에서 만난 어린 박순자의 부탁으로 구호물품을 가져다준 뒤 할머니 이금순과 재회한다. <span class="hl">늦게 우암동에 온 까닭은 부산역 대화재로 집을 잃은 친구 상철이를 챙기느라였음을 이야기한다.</span></p>
 <p><span class="hl">할머니 또한 우암동에 갑자기 오게 된 이유가 부산 가족들이 금순처럼 피란민 가족들을 많이 도와줬지만 더는 부담이 되기 싫어 스스로 나와 우암동(적기) 피란민 수용소에 왔다고 말한다.</span> 밤이 늦어 둘이 헤어져야 할 때, 할머니는 할아버지에게 여태껏 기다리면서 쓴 편지를 전달해줬고, 이에 <span class="hl">할아버지는 할머니에게 영원히 함께할 것을 약속한다.</span></p>
-          <p class="plnote">표시된 장소를 누르면 답사지 카드뉴스를 볼 수 있어요.</p></div>
+          <p class="plnote">표시된 장소를 누르면 답사지 카드 뉴스를 볼 수 있어요.</p></div>
         </div>
       </div>
     </div>
@@ -1306,7 +1336,7 @@
 <p>손자는 할아버지의 기억을 되찾아주기 위해 할아버지의 피란 시절 흔적을 따라 부산을 걷는다. <span class="pl" data-card="12" role="button" tabindex="0">아미동 비석마을</span>에서는 부모님의 사랑을, <span class="pl" data-card="4" role="button" tabindex="0">부산항</span>·<span class="pl" data-card="6" role="button" tabindex="0">40계단</span>·<span class="pl" data-card="8" role="button" tabindex="0">국제시장</span>에서는 가족을 위해 일하던 부모님의 마음을, 피란학교와 <span class="pl" data-card="9" role="button" tabindex="0">보수동 책방골목</span>에서는 첫사랑 할머니와의 만남을, <span class="pl" data-card="3" role="button" tabindex="0">우암동 소막마을</span>에서는 영원하자는 약속을 하나씩 되찾는다.</p>
 <p>그리고 <span class="hl">기억을 찾은 할아버지는 본인의 집에서 감춰 둔 기억 상자를 찾아 열어 보고, 자신의 삶과 부산 여러 곳에 함께했던 사람들이 얼마나 많았는지 깨닫는다.</span> 이러한 소중한 기억을 다시는 외면하지 않겠다고 말한 할아버지는 본인이 다시 기억을 잃을까 두려워하고 있을 때, <span class="hl">손자는 "다 기억하지 못해도 제가 대신 기억하겠다"고 말한다.</span></p>
 <p>전쟁은 많은 것을 빼앗았지만, 서로에게 기대어 살아낸 사람들의 시간은 <span class="hl2">누군가의 기억 속에서 다시 이어져갈 것이라는 희망과 함께 할아버지의 피란 기억을 손자가 잇게 되었다.</span></p>
-          <p class="plnote">표시된 장소를 누르면 답사지 카드뉴스를 볼 수 있어요.</p></div>
+          <p class="plnote">표시된 장소를 누르면 답사지 카드 뉴스를 볼 수 있어요.</p></div>
         </div>
       </div>
     </div>
@@ -1315,8 +1345,7 @@
   <section class="panel" id="p-how" hidden>
     <div class="wide">
       <div class="hhead">
-        <span class="label">HOW TO PLAY</span>
-        <h2>게임 방법</h2>
+        <h2>HOW TO PLAY</h2>
         <p class="d">설치 없이 인터넷 브라우저(PC, 태블릿, 스마트폰)에서 바로 실행됩니다. 앞 챕터를 클리어해야 다음 챕터가 열립니다.</p>
       </div>
       <div class="cols">
@@ -1397,8 +1426,8 @@
       </div>
       <div class="csec" data-s="crew"><div class="crows">
         <div class="crow"><span class="pill a" tabindex="0"><span class="pl">동아리 지도 교사</span><span class="tip">동아리 <b>운영 총괄</b> · 제작 과정 총괄 · 클로드 <b>코딩</b> 구현</span></span><div class="nm"><span><small class="rl">광안중학교 역사 교사</small>노재훈</span></div></div>
-        <div class="crow"><span class="pill b" tabindex="0"><span class="pl">3학년 학생</span><span class="tip"><b>CH 2</b> · <b>CH 4</b> <b>스토리</b> 기획 · <b>프롬프트</b> 고안 · <b>디버깅</b> 작업 실시 · <b>카드뉴스</b> 제작 · <b>구글 어스</b> 컨텐츠 제작</span></span><div class="nm"><span>김수빈</span><span>박규리</span><span>박정연</span><span>예지은</span><span>이서연</span><span>김아윤</span><span>박주영</span><span>박차미</span></div></div>
-        <div class="crow"><span class="pill c" tabindex="0"><span class="pl">2학년 학생</span><span class="tip"><b>CH 1</b> · <b>CH 3</b> <b>스토리</b> 기획 · <b>프롬프트</b> 고안 · <b>디버깅</b> 작업 실시 · <b>카드뉴스</b> 제작 · <b>구글 어스</b> 컨텐츠 제작</span></span><div class="nm"><span>조은님</span><span>김자연</span><span>변나현</span><span>임효진</span><span>김태희</span><span>박경린</span><span>유연서</span><span>김나연</span></div></div>
+        <div class="crow"><span class="pill b" tabindex="0"><span class="pl">3학년 학생</span><span class="tip"><b>CH 2</b> · <b>CH 4</b> <b>스토리</b> 기획 · <b>프롬프트</b> 고안 · <b>디버깅</b> 작업 실시 · <b>카드 뉴스</b> 제작 · <b>구글 어스</b> 컨텐츠 제작</span></span><div class="nm"><span>김수빈</span><span>박규리</span><span>박정연</span><span>예지은</span><span>이서연</span><span>김아윤</span><span>박주영</span><span>박차미</span></div></div>
+        <div class="crow"><span class="pill c" tabindex="0"><span class="pl">2학년 학생</span><span class="tip"><b>CH 1</b> · <b>CH 3</b> <b>스토리</b> 기획 · <b>프롬프트</b> 고안 · <b>디버깅</b> 작업 실시 · <b>카드 뉴스</b> 제작 · <b>구글 어스</b> 컨텐츠 제작</span></span><div class="nm"><span>조은님</span><span>김자연</span><span>변나현</span><span>임효진</span><span>김태희</span><span>박경린</span><span>유연서</span><span>김나연</span></div></div>
       </div>
       <div class="rvw" id="rvw"><div class="rvh"><span class="rvt">동아리원의 제작 소감</span><span class="rvc"><button type="button" class="rvb" data-d="-1" aria-label="이전 소감">‹</button><span class="rvn"><b id="rvi">1</b> / 16</span><button type="button" class="rvb" data-d="1" aria-label="다음 소감">›</button></span></div><div class="rvbody"><p class="rv on">동아리 활동을 하기 전의 저는 친구들과 역사적인 장소에 가도 이미 지난 이야기에 꼭 감정을 담아 슬퍼해야 하나 하고 생각했습니다. 그러나 이번 동아리 활동에서 40계단, 아미동 비석마을 등 여러 역사적인 지역을 다녀와 보니 그 시절 피난민들이 생존하기 위해 노력한 흔적을 볼 수 있었고, 이를 통해 <b class="kv">인간의 생존 의지와 삶을 재건하는 의지</b>를 느꼈습니다. 더불어 피난민들이 남긴 노력과 의지의 흔적을 부산을 사랑하는 마음을 담아 오래오래 보존하고 싶다는 생각이 들었습니다.</p><p class="rv">저는 <b class="kv">인간의 생존 의지와 삶을 재건하는 의지</b>, <b class="kv">부산 지역을 사랑하는 마음</b>, 그리고 <b class="kv">문화유산 보존의 중요성</b>을 배웠습니다. 그 시절 피란민들이 힘든 상황에서도 일자리를 찾고 희망을 놓지 않고 계속 노력하는 모습이 대단하다고 생각했고, 그 모습을 배워야 한다고 느꼈습니다. 저는 힘들 때 포기하고 싶다고 생각한 적이 많은데, 피란민들이 희망을 놓지 않고 계속 나아가려 했다는 것을 알게 된 뒤로는 저도 그분들처럼 포기하지 않으려고 생각했습니다. 또 과거에 남은 흔적을 발견해 그때를 다시 기억하는 것은 우리에게 도움이 될 것이며, 그 시절의 기억을 간직하고 떠올리는 것이 좋다고 생각합니다. 저 역시 지나간 시간도 과거이기 때문에 소중하다고 생각해서 조금씩 기록으로 남기고 있습니다.</p><p class="rv">소 막사에서 지내거나 평생 몸담던 도시를 떠나 피란길에 오른 사람들의 모습에서 그 누구도 꺾을 수 없을 것 같은 의지가 느껴졌습니다. 서로 힘을 합쳐 살아가던 그 시절 사람들을 보며, 우리가 당연하게 누리는 자유가 누군가에게는 목숨을 바쳐서라도 얻고 싶었던 소망이었다는 생각이 들었습니다. 그래서 <b class="kv">자유는 당연한 것이 아니라 누군가의 희생이 있었기에 만들어진 것</b>이라고 생각했습니다.</p><p class="rv">처음에는 평화가 왜 그렇게 중요한지 잘 몰랐습니다. 그런데 우암동 소막마을에서 사람들이 소가 살던 공간에 이불로 가벽을 세우고 한 가족이 살았다는 사실을 보고, <b class="kv">평화로웠다면 가족들이 더 편안하게 살았을 것</b>이라는 생각이 들었습니다. 또 미래 세대가 왜 역사를 알고 배워야 하는지 납득이 되지 않았는데, 우암동 소막마을을 답사하고 나니 이렇게 힘들게 살아온 분들의 <b class="kv">역사를 우리가 기억하지 않으면 점점 잊힐 것</b> 같고, 그렇게 된다면 너무 슬플 것 같다는 생각이 들었습니다.</p><p class="rv">전쟁 때문에 힘든 삶을 보내는 상황에서도 <b class="kv">서로 의지하며 살아가는 피란민들의 감정</b>이 크게 와닿았습니다. 지금 우리 중 대다수는 피란민들이 고되고 아픈 생활을 했다는 것을 모르고 있기 때문에, 이런 교육 활동과 답사, 게임 같은 놀이를 통해 우리나라의 <b class="kv">피란 생활을 쉽고 재미있게 더 널리 알고 기억했으면</b> 좋겠습니다. 이런 교육 프로그램이 의무적으로 확산되기를 바랍니다.</p><p class="rv">동아리 활동 전에는 부산이 피란수도이기 때문에 피란민들이 전쟁을 피해 부산으로 몰려와 힘겹게 사는 사람들이라고만 생각했습니다. 그런데 열악한 환경 속에서도 고향을 생각하고 가족과 생계를 위해 노력하며 새로운 곳에서 삶을 꾸려 나가는 모습을 보고 <b class="kv">인간의 생존 의지와 삶을 재건하는 의지</b>를 배웠습니다. 특히 가분수 주택을 보면서 삶을 재건하려는 의지가 많이 느껴졌습니다. 또 치매로 기억을 잃은 할아버지와 손자가 함께 기억을 찾으러 부산 곳곳을 돌아다니는 이야기를 보면서 <b class="kv">미래 세대의 역할과 기억 계승의 중요성</b>을 느꼈습니다.</p><p class="rv">피란 와서 생활하는 것이 생각보다 정말 힘들었을 것 같다는 생각이 들었습니다. 직접 답사를 하면서 '나라면 여기서 일주일도 제대로 못 살겠다'고 생각했는데, 그마저도 시간이 지나며 보완하고 보충된 모습이라는 것을 생각하니 그때 피란 와서 살아야 했다면 정말 힘들었을 것 같습니다. 물도 집도 부족하고 산에 있어 걷기조차 힘든 환경에서 훨씬 더 많은 어려움을 겪으며 살아간 것도 대단하고, 가족을 위해 열악한 환경에서 임금이 매우 낮거나 제대로 받지 못하면서도 일한 많은 사람도 대단하다고 생각합니다. 이렇게 힘든 상황에서도 살아갈 수 있었던 것은 <b class="kv">살고자 하는 의지가 있었고 서로 도우며 살았기 때문</b>이라고 생각합니다. 또 나 혼자 사는 것도 힘든데 더 나은, 인간다운 삶을 살 수 있도록 원래의 평화롭던 삶을 되찾으려 노력한 사람들도 매우 대단하고 중요한 일을 했다는 것을 알게 되었습니다.</p><p class="rv">처음에는 힘든 상황 속에서도 살아갈 의지를 가질 수 있을지, 서로 돕는 것이 가능할지 의문이 들었습니다. 하지만 동아리 활동을 하고 난 후에는 <b class="kv">서로 돕는 것이 가능하고, 피란민들이 끈기가 있었다</b>는 생각을 하게 되었습니다.</p><p class="rv">역사는 교과서에 나오는 사건이라고만 생각했고, 제가 사는 도시 부산이 품고 있는 역사적 깊이와 아픔에 대해서는 깊이 생각해 본 적이 없었습니다. 평화로운 일상을 누리는 것도 당연하게만 여겼습니다. 동아리 활동을 마친 지금은 일상에서 누리는 <b class="kv">평화와 안전이 얼마나 소중하고 감사한 것인지</b> 느끼게 되었습니다. 또 <b class="kv">우리 지역의 역사와 문화유산을 지키고 보존해야겠다</b>는 생각이 들었습니다.</p><p class="rv">동아리 활동 전에는 피란수도 부산에 대해 잘 몰랐고 크게 관심도 없었습니다. 하지만 활동을 하고 나서는 전쟁의 큰 아픔을 겪은 피란민들이 각자의 자리에서 꿋꿋하게 삶을 이어 갔다는 사실을 배우며, <b class="kv">피란민들을 단지 전쟁의 피해자로만 생각하지 않게</b> 되었습니다. 또 지금 살고 있는 지역인 부산의 역사를 배우며 <b class="kv">이런 아픈 역사를 더욱 아끼고 보존해야겠다</b>는 생각도 들었습니다.</p><p class="rv">식량과 주거 등 전쟁으로 부족한 것이 많았는데도 가족을 돌보고, 가족을 잃고 그리워하면서도 다시 만날 날을 생각하며 살아가고 일하는 그 가치가 매우 소중하고 중요하다고 생각합니다. <b class="kv">부산 지역을 사랑하는 마음과 문화유산 보존의 중요성</b>이 없다면 오래 남아야 할 이 소중한 기억들이 누군가의 기억 속에만 남고 전달되지 않았을 것 같아, 이러한 가치를 느끼고 배웠습니다.</p><p class="rv">부산에 살지만 부산에서 생활한 피란민들에 대해서는 잘 몰랐는데, 부산의 여러 지역에서 피란민들이 생활한 모습을 보며 <b class="kv">부산 지역을 사랑하는 마음과 문화유적 보존의 필요성</b>을 많이 느꼈습니다. 또 원래도 기억 계승이 중요하다고 생각했는데, 할아버지 백금동과 손자의 대화 내용에서 <b class="kv">미래 세대의 역할과 기억 계승의 중요성</b>을 더 느낄 수 있었습니다.</p><p class="rv">피란민들의 삶을 보니 <b class="kv">평화가 너무나 소중하다</b>는 것을 느꼈습니다. 또 다음 세대를 위해 <b class="kv">부산의 문화유산을 보존하는 것이 중요</b>하다는 생각이 들었고, 부산 지역을 사랑하는 마음을 가져야겠다는 마음도 들었습니다.</p><p class="rv">동아리 활동 전에는 부산이 피란수도라는 것만 대충 알았습니다. 하지만 활동을 하고 나서는 무심코 지나치던 공간에 의미를 불어넣을 줄 알게 되었고, <b class="kv">부산이라는 도시에 대한 자부심과 진정한 애향심</b>이 깊어졌습니다.</p><p class="rv">6·25 전쟁 당시의 상황을 자료 조사하며 피란민들의 아픔을 느껴 볼 수 있었습니다. 제가 그 시절 사람이었다면 견디지 못했을 것 같은데, 끝까지 견뎌 낸 사람들이 대단하게 느껴졌습니다. 게임 제작 전에는 전쟁이 단순한 하나의 사건으로만 느껴졌는데, 이번 활동을 하며 전쟁이 많은 사람의 일상을 얼마나 크게 바꿔 놓았는지 알게 되어 <b class="kv">평화의 소중함</b>을 느꼈습니다. 또 피란민들이 부족한 식량과 열악한 환경, 터전을 잃은 상황에서도 살아갈 방법을 찾고, 새로운 환경에서 일자리를 구해 서로 도우며 어려움을 극복한 점에서 <b class="kv">인간의 생존 의지와 삶을 재건하는 의지</b>를 찾아볼 수 있었습니다.</p><p class="rv">6·25 전쟁 당시 피란민들이 먹을 것과 살 곳이 부족해 힘든 생활을 한 모습과, 전쟁 중에도 서로 도우며 살아간 모습을 통해 <b class="kv">평화의 소중함</b>을 배웠습니다. 동아리 활동 전에는 부산의 여러 장소를 그냥 유명한 관광지라고 생각했지만, 활동 후에는 그곳에 전쟁 당시 사람들의 아픔과 노력이 담겨 있다는 것을 알게 되었습니다. 이를 통해 <b class="kv">우리가 누리는 평범한 일상이 당연한 것이 아니라는 생각</b>이 들었고, 앞으로 부산의 역사뿐만 아니라 다른 지역의 역사와 문화유산에도 더 많은 관심을 가져야겠다고 느꼈습니다.</p></div></div></div>
       <div class="csec" data-s="src" hidden><div class="srcs">
@@ -1412,10 +1441,11 @@
   </section>
 
 </main>
+<div class="dlm" id="gsm" hidden><div class="dc" role="dialog" aria-modal="true" aria-label="게임 시작 안내"><b>시작하기 전에</b><p><span><b>카드 뉴스</b>와 <b>구글 어스</b>로</span><span class="nw"><b>게임의 배경이 되는 장소</b>를 <b>미리 공부</b>해볼 수 있어요!</span></p><div class="da"><a class="back" href="#cards" data-go="cards"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="7" width="13" height="13" rx="2.2"/><path d="M7.5 7V5.2A1.7 1.7 0 0 1 9.2 3.5h9.1a2.2 2.2 0 0 1 2.2 2.2V14a1.7 1.7 0 0 1-1.7 1.7H16.5"/><path d="M6.8 12h6.4M6.8 15.5h4"/></svg><span>카드 뉴스 보러 가기</span></a><a class="back" href="#earth" data-go="earth"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><ellipse cx="12" cy="12" rx="3.8" ry="8.5"/></svg><span>구글 어스 보러 가기</span></a></div><div class="da one"><a class="go" href="https://jjh0104kr.github.io/busan2026/" target="_blank" rel="noopener" data-gsgo>게임 시작하기 ↗</a></div></div></div>
 <div class="dlm" id="dlm" hidden><div class="dc" role="dialog" aria-modal="true" aria-label="학습 자료 다운로드 안내"><b>학습 자료 다운로드</b><p><span><b class="kv">활동지(학생용, 교사용)</b>와 <b class="kv">가이드북(교사용)</b>이 포함되어 있습니다.</span><span>다운로드 버튼을 누르면, 한글 파일이 <b class="kv">zip 파일 하나</b>로 다운됩니다.</span><span>수업을 진행하시려는 <b class="kv">선생님/보호자께서는</b> 적극적으로 활용해주시면 감사하겠습니다.</span></p><div class="da"><a class="go" href="files/learning-material.zip" download="피란의 기억을 잇다 학습 자료 및 교사용 가이드북.zip" data-dlgo>다운로드</a><button type="button" class="back" data-dlclose>돌아가기</button></div></div></div>
 <div class="qrm" id="qrm" hidden><div class="qc" role="dialog" aria-label="QR 코드"><button type="button" class="x" data-qrclose aria-label="닫기">×</button><b>피란의 기억을 잇다</b><img src="img/qr.png" alt="게임 QR 코드" width="240" height="240"><span class="qurl" role="button" tabindex="0" title="클릭하면 주소가 복사돼요"><span class="ua">https://jjh0104kr.github.io/busan2026/</span><span class="ub">주소가 복사되었어요</span></span><span>스마트폰 카메라로 스캔해 주세요</span><button type="button" class="btn qzoom" data-qrzoom>QR 확대하기</button></div></div>
 <div class="qrfull" id="qrfull" hidden><button type="button" class="x" data-qrfullclose aria-label="닫기">×</button><img src="img/qr.png" alt="게임 QR 코드 (확대)"></div>
-<div class="cardm" id="cardm" hidden><div class="cc" role="dialog" aria-label="답사지 카드뉴스"><button type="button" class="x" data-cardclose aria-label="닫기">×</button><img id="cardmimg" alt="" width="640" height="640"><span id="cardmcap"></span></div></div>
+<div class="cardm" id="cardm" hidden><div class="cc" role="dialog" aria-label="답사지 카드 뉴스"><button type="button" class="x" data-cardclose aria-label="닫기">×</button><img id="cardmimg" alt="" width="640" height="640"><span id="cardmcap"></span></div></div>
 <div class="cine" id="cine" hidden><button type="button" class="skip" id="cskip">SKIP ›</button><div class="cdust" id="cdust"></div><div class="cstage" id="cstage"></div><i class="cbar" id="cbar"></i></div>
 <footer class="foot">© 2026 광안중학교 역사심화탐구동아리 [굳세어라 광안아]</footer>
 
@@ -1429,7 +1459,7 @@
     var z=1.5+Math.random()*2.5;e.style.width=e.style.height=z+'px';d.appendChild(e);}
 })();
 
-// 장소 카드뉴스 창
+// 장소 카드 뉴스 창
 (function(){
   var m=document.getElementById('cardm'),im=document.getElementById('cardmimg'),cp=document.getElementById('cardmcap');
   var slides=document.querySelectorAll('#track .slide img');
@@ -1572,6 +1602,7 @@ function playCine(id,done){
       playCine(id,function(){pn.hidden=false;});
     }
   }
+  document.addEventListener('pointerdown',function(e){document.documentElement.classList.toggle('touch',e.pointerType==='touch'||e.pointerType==='pen');},true);
   document.addEventListener('click',function(e){
     var a=e.target.closest('[data-go]');
     var all=document.querySelectorAll('.has-sub');
@@ -1579,7 +1610,7 @@ function playCine(id,done){
     e.preventDefault();
     var id=a.getAttribute('data-go');
     var gli=a.closest('.has-sub'),isG=a.hasAttribute('data-group');
-    if(isG && !window.matchMedia('(hover:hover)').matches){
+    if(isG && (document.documentElement.classList.contains('touch')||!window.matchMedia('(hover:hover)').matches)){
       var was=gli.classList.contains('open');
       [].forEach.call(all,function(l){l.classList.remove('open');});
       if(!was)gli.classList.add('open'); return;
@@ -1598,7 +1629,7 @@ function playCine(id,done){
   });
   [].forEach.call(document.querySelectorAll('.has-sub'),function(l){l.addEventListener('mouseleave',function(){l.classList.remove('shut');});});
 
-  // 카드뉴스 넘기기
+  // 카드 뉴스 넘기기
   var tr=document.getElementById('track');
   var upd=function(){};
   if(tr){
@@ -1639,7 +1670,7 @@ function playCine(id,done){
     document.addEventListener('keydown',function(e){
       if(e.defaultPrevented||cineOn)return;
       if(document.getElementById('p-cards').hidden)return;
-      if(!document.getElementById('qrm').hidden||!document.getElementById('cardm').hidden||!document.getElementById('dlm').hidden)return;
+      if(!document.getElementById('qrm').hidden||!document.getElementById('cardm').hidden||!document.getElementById('dlm').hidden||!document.getElementById('gsm').hidden)return;
       if(e.key==='ArrowRight'){e.preventDefault();jump(cur()+1);}
       else if(e.key==='ArrowLeft'){e.preventDefault();jump(cur()-1);}
     });
@@ -1704,13 +1735,15 @@ function playCine(id,done){
   // 모든 이미지가 불러와지면 화면 표시
   var imgs=[].slice.call(document.images),total=imgs.length+1,done=0,ended=false,t0=Date.now();
   var lb=document.getElementById('lbar'),ln=document.getElementById('lnum'),ld=document.getElementById('loader');
+  var heroOk=false,late=false;
   function step(){
     done++;
-    var p=Math.round(done/total*100);
+    var p=Math.min(99,Math.round(done/total*100));
     lb.style.width=p+'%'; ln.textContent='LOADING '+p+'%';
     if(done>=total)finish();
   }
   function finish(){
+    if(!heroOk&&!late)return; // 홈 배경이 준비되기 전에는 화면을 열지 않음(느린 기기 대비)
     if(ended)return; ended=true;
     var wait=Math.max(0,500-(Date.now()-t0));
     setTimeout(function(){
@@ -1724,8 +1757,12 @@ function playCine(id,done){
     if(im.complete){step();}
     else{im.addEventListener('load',step,{once:true});im.addEventListener('error',step,{once:true});}
   });
-  var h=new Image();h.onload=h.onerror=step;h.src='img/hero.webp';
-  setTimeout(finish,20000);
+  var h=new Image();
+  function heroDone(){if(heroOk)return;heroOk=true;step();}
+  h.onload=function(){ if(h.decode){h.decode().then(heroDone,heroDone);}else heroDone(); };
+  h.onerror=heroDone;h.src='img/hero.webp';
+  setTimeout(function(){ if(heroOk)finish(); },12000);   // 다른 이미지가 늦어도 12초 뒤 시작
+  setTimeout(function(){ late=true;finish(); },40000);    // 최후의 안전장치
 })();
 
 // 애니메이션 켜기/끄기
@@ -1769,7 +1806,7 @@ function playCine(id,done){
 
 <script>
 (function(){
-  var M={'HOME':'홈','BEFORE PLAY':'플레이 전','CARD NEWS':'카드뉴스','GOOGLE EARTH':'구글 어스','UNESCO':'유네스코','STORY':'스토리','PROLOGUE':'프롤로그','CH 1':'챕터 1','CH 2':'챕터 2','CH 3':'챕터 3','CH 4':'챕터 4','ENDING':'엔딩','CHARACTERS':'등장인물','HOW TO PLAY':'게임 방법','CREDITS':'제작 정보','SOURCES':'출처','TOOLS':'제작 도구','PLAY GAME ↗':'게임 시작 ↗'};
+  var M={'HOME':'홈','BEFORE PLAY':'플레이 전','CARD NEWS':'카드 뉴스','GOOGLE EARTH':'구글 어스','UNESCO':'유네스코','STORY':'스토리','PROLOGUE':'프롤로그','CH 1':'챕터 1','CH 2':'챕터 2','CH 3':'챕터 3','CH 4':'챕터 4','ENDING':'엔딩','CHARACTERS':'등장인물','HOW TO PLAY':'게임 방법','CREDITS':'제작 정보','SOURCES':'출처','TOOLS':'제작 도구','PLAY GAME ↗':'게임 시작 ↗'};
   var H=document.documentElement,b=document.getElementById('lang');if(!b)return;
   /* 상단바: 두 언어를 같은 자리에 겹쳐 두고 넓은 쪽 너비를 유지 -> 글자가 바뀌어도 메뉴가 움직이지 않음 */
   function dual(e,en,ko){e.innerHTML='<span class="lg"><span data-l="en">'+en+'</span><span data-l="ko">'+ko+'</span></span>';}
@@ -1854,6 +1891,23 @@ function playCine(id,done){
     var n=ORDER[i+(dx<0?1:-1)];if(!n)return;
     var a=document.createElement('a');a.setAttribute('data-go',n);a.href='#'+n;a.hidden=true;document.body.appendChild(a);a.click();document.body.removeChild(a);
   },{passive:true});
+})();
+</script>
+<script>
+// 게임 시작 전 안내창
+(function(){
+  var g=document.getElementById('gsm'),URL_='jjh0104kr.github.io/busan2026';
+  function close(){g.hidden=true;}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(g.hidden){
+      if(a&&a.hasAttribute('data-gs')){e.preventDefault();e.stopPropagation();g.hidden=false;var f0=g.querySelector('.go');if(f0)f0.focus({preventScroll:true});return;}
+      if(a&&!a.closest('#gsm')&&(a.getAttribute('href')||'').indexOf(URL_)>=0){e.preventDefault();e.stopPropagation();g.hidden=false;var f=g.querySelector('.go');if(f)f.focus({preventScroll:true});}
+      return;
+    }
+    if(e.target===g||e.target.closest('[data-gsgo]')||e.target.closest('[data-go]'))close();
+  },true);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!g.hidden)close();});
 })();
 </script>
 </body>
